@@ -27,7 +27,6 @@ const Login = () => {
     useEffect(() => {
         setErrMsg('');
     }, [user, pwd])
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUser('');
@@ -79,9 +78,14 @@ const Login = () => {
         //         </section>
         //     ) : (
 
-        <section>
+        <div id='loginCredentials'>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <div className='signHeader'> 
             <h1>Sign In</h1>
+            <div className='underline'></div>
+            </div>
+            
+            
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input
@@ -91,6 +95,7 @@ const Login = () => {
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
                     value={user}
+                    // placeholder='Username'
                     required
                 />
 
@@ -104,13 +109,15 @@ const Login = () => {
                 />
                 <button>Sign In</button>
             </form>
+            <div className="regMsg">
             <p>
                 Need an Account?<br />
                 <span className="line">
                     <Link to="/register">Sign Up</Link>
                 </span>
             </p>
-        </section>
+            </div>
+        </div>
 
         // )}
         // </>
