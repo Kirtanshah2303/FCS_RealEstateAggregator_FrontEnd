@@ -1,7 +1,7 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-const RequireAuth = ({ allowedRoles }) => {
+const RequireAuth = () => {
     const { auth } = useAuth();
     const location = useLocation();
 
@@ -17,6 +17,7 @@ const RequireAuth = ({ allowedRoles }) => {
     return (
             auth?.user
                 ?<Outlet />
+                // If the user is not logged in then it redirect to login page
                 : <Navigate to="/login" state={{ from: location }} replace />
     );
 }
