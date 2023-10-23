@@ -1,19 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 #loginCredentials {
-    width: 30%;
+    /* width: 30%;
     max-width: 30%;
     min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
-    /* background-color: rgba(0,0,0,0.4); */
-    /* background: #fff; */
-    background:  #00cccc;
+    background:  #00cccc; */
+    /* text-align: center; */
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    margin: 0 auto;
 }
 
-form {
+.logincss {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -62,7 +66,7 @@ textarea {
   color: #787878;
 } */
 
-button {
+.btn-sign {
   padding: 0.5rem;
   font-size: 25px;
   font-weight: 600;

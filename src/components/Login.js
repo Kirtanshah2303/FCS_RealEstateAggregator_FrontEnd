@@ -27,6 +27,14 @@ const Login = () => {
     useEffect(() => {
         setErrMsg('');
     }, [user, pwd])
+
+    // const handleLoginSuccess = (userName) => {
+    //     // Call this function upon successful login
+    //     setAuth({ user: userName }); // Set the user in your authentication context
+    //     navigate(from, { state: { user: userName } }); // Navigate to the homepage with user name in state
+    // };
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUser('');
@@ -42,13 +50,19 @@ const Login = () => {
                     withCredentials: true
                 }
             );
-            console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response));
+            // console.log(JSON.stringify(response?.data));
+            console.log(response.data.id_token);
+            const idToken = response.data.id_token;
+            // Save the id_token to local storage
+            localStorage.setItem('id_token', idToken);
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             setAuth({ user, pwd, roles, accessToken });
             setUser('');
             setPwd('');
+            // handleLoginSuccess(user);
+            // state management, this will transfer the user 
+            // navigate(from, { replace: true, state: { user } });
             navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
@@ -86,7 +100,7 @@ const Login = () => {
             </div>
             
             
-            <form onSubmit={handleSubmit}>
+            <form className='logincss' onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input
                     type="text"
@@ -107,7 +121,7 @@ const Login = () => {
                     value={pwd}
                     required
                 />
-                <button>Sign In</button>
+                <button className='btn-sign'>Sign In</button>
             </form>
             <div className="regMsg">
             <p>

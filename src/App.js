@@ -4,6 +4,8 @@ import Home from './components/Home';
 import Layout from './components/Layout';
 import SaleProperty from './components/SaleProperty';
 import PropertyForm from './components/PropertyForm';
+import Newhome from './components/Newhome';
+import Ekyc from './components/Ekyc';
 // import Editor from './components/Editor';
 import Admin from './components/Admin';
 import Missing from './components/Missing';
@@ -22,9 +24,15 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      
+      <Route path="/" element={<Newhome />} /> {/* Change the path to "/" for Navbar to be the default */}
+      <Route element={<Layout />}>
+      {/* <Route path="/" element={<Layout />}> */}
+      
         {/* public routes */}
+        <Route path = "ekyc" element={<Ekyc/>} />
         <Route path="login" element={<Login />} />
+
         <Route path="register" element={<Register />} />
         <Route path="linkpage" element={<LinkPage />} />
         {/* <Route path="unauthorized" element={<Unauthorized />} /> */}

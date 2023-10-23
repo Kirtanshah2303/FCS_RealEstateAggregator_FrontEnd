@@ -1,0 +1,86 @@
+/* .blank{
+    color: red;
+    font-size:50px;
+  } */
+  /* .conatiner{
+    display: flex;
+  
+  } */
+  .a{
+    margin: 200px;
+    height: 50%;
+    width: 75%;
+    background-color: black;
+    /* display: inline; */
+    justify-content: center;
+   /* display: flex; */
+   align-items: center;
+  
+  }
+
+  .form-inline{
+    margin-left: 45%;
+  }
+  .nav-item{
+    margin-left: 20px;
+  }
+  
+  .box1{
+    height: 25px;
+    width: 200px;
+    margin: 82px;
+    padding: 25px;
+    background-color:rgb(18, 176, 4);
+   justify-content: center;
+   /* display: flex; */
+   align-items: center;
+  }
+  .box2{
+    height: 25px;
+  width: 200px;
+  /* margin: 82px;
+  padding: 25px; */
+  background-color: rgb(255, 9, 9);
+  color: aliceblue;
+  /* display: flex; */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  
+  
+   
+   
+  }
+  .box3{
+    height: 25px;
+  width: 200px;
+  padding:25px;
+  margin: 82px;
+  background-color: rgb(207, 199, 207);
+  justify-content: center;
+  /* display: flex; */
+  align-items: center;
+    
+  }
+  .box4{
+    height: 25px;
+    width: 200px;
+    padding:25px;
+    margin: 82px;
+    background-color: rgb(186, 19, 186);
+    justify-content: center;
+    /* display: flex; */
+    align-items: center;
+  }
+  .box4:hover{
+  background-color: lightpink;
+  }
+  .footer{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: skyblue;
+    color: white;
+    font-size: 18px;
+  }
+  

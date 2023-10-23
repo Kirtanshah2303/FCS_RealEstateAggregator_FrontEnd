@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom"
+import {useNavigate } from "react-router-dom"
 
 
 
 const SaleProperty = () =>{
+    const navigate = useNavigate();
+    const AddProperty=() =>{
+        navigate('/addProperty');
+    };
+
+
     return (
         <div className="saleContainer">
 
@@ -34,8 +40,8 @@ const SaleProperty = () =>{
                 </div>
                 <div class="rightcolumn">
                     <div class="card">
-                        <button>
-                            <Link to="/AddProperty">Add Property</Link>
+                        <button onClick={AddProperty}> Add Property
+                            {/* <Link to="/addProperty">Add Property</Link> */}
                         </button>
                         {/* <h4>Add Property</h4> */}
                         {/* <div class="fakeimg" style="height:100px;">Image</div> */}

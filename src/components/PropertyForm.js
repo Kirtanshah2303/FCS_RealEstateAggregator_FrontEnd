@@ -24,7 +24,7 @@ const PropertyForm = () => {
 
       return (
         <div className='property-form-container'>
-          <h1>Property Information Form</h1>
+          <h3 style={{fontSize: '25px', color: 'blue', textAlign:'center', fontWeight:'500' }}>Property Information Form</h3>
           <form onSubmit={handleSubmit}>
             <div className='input-field'>
               <label htmlFor="plotNo">Plot No</label>

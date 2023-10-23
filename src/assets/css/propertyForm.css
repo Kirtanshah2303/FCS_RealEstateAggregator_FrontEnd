@@ -1,6 +1,7 @@
 /* Container for the form */
 .property-form-container {
     max-width: 600px;
+    width: 500px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -22,15 +23,28 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  input[type="text"],
+  .input-field label {
+    /* display: block; */
+    font-size: 16px;
+    color: #333; /* Text color */
+  }
+  /* input[type="text"],
   .select-input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+  } */
+  .input-field input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
   }
-
   .parking-input{
     margin-left: 30px;
     width: 50px;

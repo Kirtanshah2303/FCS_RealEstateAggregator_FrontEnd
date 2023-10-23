@@ -1,19 +1,96 @@
-#registerCredentials{
-    width: 30%;
-    max-width: 30%;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    /* background-color: rgba(0,0,0,0.4); */
-    background: #00b3b3
-}
-.regHeader{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* gap: 10px; */
+#registerCredentials {
+    /* text-align: center; */
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  .regHeader {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .regHeader h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .underline {
+    width: 50px;
+    height: 2px;
+    background-color: #007bff;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
     width: 100%;
-    /* margin-top: 30px; */
-}
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  /* Style the valid and invalid icons */
+  .valid, .invalid {
+    margin-left: 10px;
+    font-size: 20px;
+    color: green; /* Valid color */
+  }
+  
+  .invalid {
+    color: red; /* Invalid color */
+  }
+  
+  /* Style the instructions note */
+  .instructions {
+    color: #333;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .instructions svg {
+    margin-right: 5px;
+  }
+  
+  /* Style the submit button */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  /* Disable the button when not valid */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Style the "Already registered" link */
+  .alreadyRegisterd {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .alreadyRegisterd .line a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  

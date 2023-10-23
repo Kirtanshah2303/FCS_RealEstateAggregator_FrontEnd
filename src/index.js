@@ -5,6 +5,7 @@ import './assets/css/login.css';
 import './assets/css/register.css';
 import './assets/css/saleProperty.css';
 import './assets/css/propertyForm.css';
+import './assets/css/home.css';
 
 import App from './App';
 import { AuthProvider } from './context/AuthProvider';
