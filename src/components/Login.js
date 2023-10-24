@@ -3,9 +3,10 @@ import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../api/axios';
+import { setUserSession } from '../Utils/Common';
 const LOGIN_URL = 'http://localhost:8080/api/authenticate';
 
-const Login = () => {
+const Login = (props) => {
     const { setAuth } = useAuth();
 
     const navigate = useNavigate();
@@ -53,6 +54,8 @@ const Login = () => {
             // console.log(JSON.stringify(response?.data));
             console.log(response.data.id_token);
             const idToken = response.data.id_token;
+            //Session Storage
+            setUserSession(idToken, user);
             // Save the id_token to local storage
             localStorage.setItem('id_token', idToken);
             const accessToken = response?.data?.accessToken;
@@ -60,6 +63,7 @@ const Login = () => {
             setAuth({ user, pwd, roles, accessToken });
             setUser('');
             setPwd('');
+
             // handleLoginSuccess(user);
             // state management, this will transfer the user 
             // navigate(from, { replace: true, state: { user } });
@@ -68,9 +72,9 @@ const Login = () => {
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
+                setErrMsg(err.response.data.message);
             } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+                setErrMsg(err.response.data.message);
             } else {
                 setErrMsg('Login Failed');
             }
@@ -121,6 +125,7 @@ const Login = () => {
                     value={pwd}
                     required
                 />
+
                 <button className='btn-sign'>Sign In</button>
             </form>
             <div className="regMsg">

@@ -1,18 +1,31 @@
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import Box from "./Box";
 import Footer from "./Footer";
+import {getToken, removeUserSession } from "../Utils/Common";
 
-export default function Navbar() {
+const Navbar= (props) => {
   const title = "Real Estate";
   const aboutText = "eKyc";
-  const aboutText1 = "LOGIN-SIGNUP";
+  const aboutText1 = "Login/SignUp";
+
+  let token;
+  let user;
+
+  useEffect(() => {
+     token = getToken();
+     user = "Devkul";
+     if(token){
+      console.log("You are logged In");
+      setIsLoggedIn(true);
+    }
+}, [])
 
   // Initialize user and isLoggedIn state
   // const [user, setUser] = useState(null);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // const location = useLocation();
   // const userFromLocation = location.state?.user; // Get the user name from the location state
@@ -28,7 +41,17 @@ export default function Navbar() {
   //   setIsLoggedIn(false);
   // };
 
+    // if(token){
+    //   console.log("You are logged In");
+    //   setIsLoggedIn(true);
+    // }
 
+    const handleLogout=() => {
+      removeUserSession();
+      setIsLoggedIn(false);
+      <Link to="/"></Link>
+  
+    }
 
   return (
     <>
@@ -83,9 +106,8 @@ export default function Navbar() {
 
 
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            {/* {isLoggedIn ? (
-              Display user name and a logout button when logged in
-              <>
+              {isLoggedIn ? (
+                <>
                 <li className="nav-item">
                   <span className="nav-link text-light">{user}</span>
                 </li>
@@ -94,15 +116,16 @@ export default function Navbar() {
                     Logout
                   </button>
                 </li>
-              </>
-            ) : ( */}
-              {/* Display the login link when not logged in */}
-              <li className="nav-item">
+                </>
+              ):(
+                <li className="nav-item">
                 <Link to="/login" className="nav-link text-light">
                   {aboutText1}
                 </Link>
               </li>
-            {/* )} */}
+             )}
+             
+              
           </ul>
 
 
@@ -115,4 +138,5 @@ export default function Navbar() {
     </>
   );
 }
+export default Navbar;
 
