@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import axios  from 'axios';
+import {getToken, removeUserSession } from "../Utils/Common";
 const PropertyForm = () => {
     const [formData, setFormData] = useState({
-      plotNo: '',
-      plotName: '',
+      propertyNumber: '',
+      propertyName: '',
       societyName: '',
-      nearByLandmark: '',
-      area: '',
-      bhk: '',
-      parking: 'No',
-      maintenance: '',
+      landMark: '',
+      propertyArea: '',
+      roomCapacity: '',
+      parking: false,
+      typeOfProperty: ''
+      // maintenance: '',
     });
+
+    const token = getToken();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -19,6 +24,13 @@ const PropertyForm = () => {
       const handleSubmit = (event) => {
         event.preventDefault();
         // Handle form submission here, e.g., send data to an API or perform other actions.
+        axios.post("http://localhost:8080/api/sell/enter", formData,{
+          headers:{
+            "Authorization" : "Bearer "+token
+          }
+        }).then((response) => {
+          console.log(response);
+        });
         console.log(formData);
       };
 
@@ -26,22 +38,31 @@ const PropertyForm = () => {
         <div className='property-form-container'>
           <h3 style={{fontSize: '25px', color: 'blue', textAlign:'center', fontWeight:'500' }}>Property Information Form</h3>
           <form onSubmit={handleSubmit}>
+          <div className='input-field'>
+              <label htmlFor="typeOfProperty">Type of Property</label>
+              <input
+                type="text"
+                name="typeOfProperty"
+                value={formData.typeOfProperty}
+                onChange={handleInputChange}
+              />
+            </div>
             <div className='input-field'>
               <label htmlFor="plotNo">Plot No</label>
               <input
                 type="text"
-                name="plotNo"
-                value={formData.plotNo}
+                name="propertyNumber"
+                value={formData.propertyNumber}
                 onChange={handleInputChange}
               />
             </div>
     
             <div className='input-field'>
-              <label htmlFor="plotName">Plot Name</label>
+              <label htmlFor="propertyName">Plot Name</label>
               <input
                 type="text"
-                name="plotName"
-                value={formData.plotName}
+                name="propertyName"
+                value={formData.propertyName}
                 onChange={handleInputChange}
               />
             </div>
@@ -57,31 +78,31 @@ const PropertyForm = () => {
             </div>
     
             <div className='input-field'>
-              <label htmlFor="nearByLandmark">Near By Landmark</label>
+              <label htmlFor="landMark">Near By Landmark</label>
               <input
                 type="text"
-                name="nearByLandmark"
-                value={formData.nearByLandmark}
+                name="landMark"
+                value={formData.landMark}
                 onChange={handleInputChange}
               />
             </div>
     
             <div className='input-field'> 
-              <label htmlFor="area">Area</label>
+              <label htmlFor="propertyArea">Area</label>
               <input
                 type="text"
-                name="area"
-                value={formData.area}
+                name="propertyArea"
+                value={formData.propertyArea}
                 onChange={handleInputChange}
               />
             </div>
     
             <div className='input-field'>
-              <label htmlFor="bhk">BHK</label>
+              <label htmlFor="roomCapacity">BHK</label>
               <input
                 type="text"
-                name="bhk"
-                value={formData.bhk}
+                name="roomCapacity"
+                value={formData.roomCapacity}
                 onChange={handleInputChange}
               />
             </div>
@@ -94,12 +115,12 @@ const PropertyForm = () => {
                 value={formData.parking}
                 onChange={handleInputChange}
               >
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value={true}>Yes</option>
+                <option value={false}>No</option>
               </select>
             </div>
     
-            <div className='input-field'>
+            {/* <div className='input-field'>
               <label htmlFor="maintenance">Maintenance</label>
               <input
                 type="text"
@@ -107,8 +128,8 @@ const PropertyForm = () => {
                 value={formData.maintenance}
                 onChange={handleInputChange}
               />
-            </div>
-            <div className='input-field'>
+            </div> */}
+            {/* <div className='input-field'>
               <label htmlFor="extraFacilities">Extra Facilities</label>
               <input
                 type="text"
@@ -116,8 +137,8 @@ const PropertyForm = () => {
                 value={formData.extraFacilities}
                 onChange={handleInputChange}
               />
-            </div>
-            <div className='input-field'>
+            </div> */}
+            {/* <div className='input-field'>
               <label htmlFor="propertyDocumnet">Property Document</label>
               <input
                 className='file-input'
@@ -126,13 +147,13 @@ const PropertyForm = () => {
                 value={formData.propertyDocumnet}
                 onChange={handleInputChange}
               />
-            </div>
+            </div> */}
             <div className='input-field'>
-              <label htmlFor="saleAmount">Sale Amount</label>
+              <label htmlFor="sellAmount">Sale Amount</label>
               <input
                 type="text"
-                name="saleAmount"
-                value={formData.saleAmount}
+                name="sellAmount"
+                value={formData.sellAmount}
                 onChange={handleInputChange}
               />
             </div>
