@@ -6,11 +6,11 @@ import SaleProperty from './components/SaleProperty';
 import PropertyForm from './components/PropertyForm';
 import Newhome from './components/Newhome';
 import Ekyc from './components/Ekyc';
+import UserProfile from './components/UserProfile';
 // import Editor from './components/Editor';
 // import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
-import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 
@@ -34,7 +34,6 @@ function App() {
         <Route path="login" element={<Login />} />
 
         <Route path="register" element={<Register />} />
-        <Route path="linkpage" element={<LinkPage />} />
         <Route path="unauthorized" element={<Unauthorized />} />
         
 
@@ -44,6 +43,7 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path="saleProperty" element={<SaleProperty />} />
           <Route path="addProperty" element={<PropertyForm />} />
+          <Route path="userProfile" element={<UserProfile />} />
         </Route>
 
 

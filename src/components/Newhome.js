@@ -1,7 +1,7 @@
 
 import React, { useState,useEffect } from "react";
-import {Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import {Link, useNavigate } from "react-router-dom";
+// import { useLocation } from 'react-router-dom';
 import Box from "./Box";
 import Footer from "./Footer";
 import {getToken, removeUserSession } from "../Utils/Common";
@@ -10,6 +10,7 @@ const Navbar= (props) => {
   const title = "Real Estate";
   const aboutText = "eKyc";
   const aboutText1 = "Login/SignUp";
+  const navigate = useNavigate();
 
   let token;
   let user;
@@ -51,6 +52,10 @@ const Navbar= (props) => {
       setIsLoggedIn(false);
       <Link to="/"></Link>
   
+    }
+
+    const userProfile=() => {
+      navigate("/userProfile");
     }
 
   return (
@@ -109,7 +114,7 @@ const Navbar= (props) => {
               {isLoggedIn ? (
                 <>
                 <li className="nav-item">
-                  <span className="nav-link text-light">{user}</span>
+                  <button className="btn btn-link nav-link text-light" onClick={userProfile}>User</button>
                 </li>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link text-light" onClick={handleLogout}>
