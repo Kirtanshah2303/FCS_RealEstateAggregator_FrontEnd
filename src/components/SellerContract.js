@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 
 const Contract = () => {
   const [formData, setFormData] = useState({
-    contractStartDate: '',
-    contractEndDate: '',
-    propertyType: '',
-    city: '',
-    rentAmount: '',
-    name: '',
-    address: '',
-    email: '',
-    securityDeposit: '',
+    dueDatePayment: '',
+    firstInstallmentDate: '',
+    firstInstallmentAmount: '',
+    // city: '',
+    // rentAmount: '',
+    // name: '',
+    // address: '',
+    // email: '',
+    // securityDeposit: '',
   });
 
   const handleChange = (e) => {
@@ -35,36 +35,36 @@ const Contract = () => {
     <div className="text-primary">
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label>Due Date of Payment:</label>
           <input
-            type="text"
-            name="name"
+            type="date"
+            name="dueDatePayment"
             value={formData.name}
             onChange={handleChange}
           />
         </div>
 
         <div>
-          <label>Address:</label>
+          <label>First Installment Date:</label>
           <input
-            type="text"
-            name="address"
+            type="date"
+            name="firstInstallmentDate"
             value={formData.address}
             onChange={handleChange}
           />
         </div>
 
         <div>
-          <label>Email:</label>
+          <label>Installment Amount:</label>
           <input
-            type="email"
-            name="email"
+            type="text"
+            name="firstInstallmentAmount"
             value={formData.email}
             onChange={handleChange}
           />
         </div>
       
-        <div>
+        {/* <div>
           <label>Property Type:</label>
           <input
             type="text"
@@ -92,7 +92,7 @@ const Contract = () => {
             value={formData.rentAmount}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
         <button className="contract-button mx-3" type="button" onClick={handleContract}>
          Submit
