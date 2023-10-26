@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios  from 'axios';
+import {Link, useNavigate } from "react-router-dom";
 import {getToken, removeUserSession } from "../Utils/Common";
 const PropertyForm = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const PropertyForm = () => {
     });
 
     const token = getToken();
-
+    const navigate = useNavigate();
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
@@ -26,11 +27,12 @@ const PropertyForm = () => {
         // Handle form submission here, e.g., send data to an API or perform other actions.
         axios.post("http://localhost:8080/api/sell/enter", formData,{
           headers:{
-            "Authorization" : "Bearer "+token
+            "Authorization" : "Bearer "+ token
           }
         }).then((response) => {
           console.log(response);
           console.log("Testing printing id of the property-->"+response.data.id);
+          navigate("/sellerContract/"+response.data.id);
         }).catch((error) => {
           console.log(error.response.status)
           if(error.response.status === 401){
