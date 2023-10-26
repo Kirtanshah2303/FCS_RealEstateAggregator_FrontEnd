@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {useNavigate } from "react-router-dom"
 
 
@@ -8,6 +9,9 @@ const SaleProperty = () =>{
         navigate('/addProperty');
     };
 
+    useEffect(() => {
+        console.log("Inside Page")
+    })
 
     return (
         <div className="saleContainer">

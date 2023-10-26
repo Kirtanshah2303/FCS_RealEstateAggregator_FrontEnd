@@ -30,6 +30,12 @@ const PropertyForm = () => {
           }
         }).then((response) => {
           console.log(response);
+          console.log("Testing printing id of the property-->"+response.data.id);
+        }).catch((error) => {
+          console.log(error.response.status)
+          if(error.response.status === 401){
+            removeUserSession()
+          }
         });
         console.log(formData);
       };
