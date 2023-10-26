@@ -57,12 +57,13 @@ const Login = (props) => {
             //Session Storage
             setUserSession(idToken, user);
             // Save the id_token to local storage
-            localStorage.setItem('id_token', idToken);
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({ user, pwd, roles, accessToken });
-            setUser('');
-            setPwd('');
+            // localStorage.setItem('id_token', idToken);
+            // localStorage.setItem('user', user);
+            // const accessToken = response?.data?.accessToken;
+            // const roles = response?.data?.roles;
+            setAuth({ user,idToken});
+            // setUser('');
+            // setPwd('');
 
             // handleLoginSuccess(user);
             // state management, this will transfer the user 

@@ -16,9 +16,10 @@ const Box = () => {
     window.open(url, '_blank');
   };
 
-  const handlerentPropertyClick = () => {
-    const url = '#';
-    window.open(url, '_blank');
+  const handleRentPropertyClick = () => {
+    // const url = '#';
+    // window.open(url, '_blank');
+    navigate('/rentProperty');
   };
 
   const handleviewPropertyClick = () => {
@@ -43,7 +44,7 @@ const Box = () => {
           </div>
 
           <div className="col-md-3">
-            <button className="btn btn-secondary px-4 my-3" onClick={handlerentPropertyClick}>
+            <button className="btn btn-secondary px-4 my-3" onClick={handleRentPropertyClick}>
               RENT Property
             </button>
           </div>

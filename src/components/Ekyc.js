@@ -29,7 +29,7 @@ const Ekyc = () => {
     try {
       const response = await axios.post(eKyc_URL, JSON.stringify({ email: user, password: pwd }), {
         headers: { 'Content-Type': 'application/json' },
-        // withCredentials: true
+        withCredentials: true
       });
       
       // if (response.status) {
