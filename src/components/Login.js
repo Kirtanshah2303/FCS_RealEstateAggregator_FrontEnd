@@ -57,10 +57,10 @@ const Login = (props) => {
             //Session Storage
             setUserSession(idToken, user);
             // Save the id_token to local storage
-            localStorage.setItem('id_token', idToken);
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({ user, pwd, roles, accessToken });
+            // localStorage.setItem('id_token', idToken);
+            // const accessToken = response?.data?.accessToken;
+            // const roles = response?.data?.roles;
+            setAuth({ user, idToken });
             setUser('');
             setPwd('');
 

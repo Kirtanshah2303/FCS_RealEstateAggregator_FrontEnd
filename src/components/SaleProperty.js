@@ -11,9 +11,6 @@ const SaleProperty = () => {
         navigate('/addProperty');
     };
 
-    const handleOnRentClick = () => {
-        // navigate('/rent');
-    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -28,9 +25,6 @@ const SaleProperty = () => {
         // Add your delete logic here
     };
 
-    const handleOnnewpropertyClick = () => {
-        // navigate('/addnewproperty');
-    };
 
 
 
