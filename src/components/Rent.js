@@ -12,9 +12,6 @@ const Rent = () => {
     lastpayment: '',
   });
 
-  const handleOnRentClick = () => {
-    navigate('/rent');
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,21 +24,6 @@ const Rent = () => {
 
   const handleDeleteClick = () => {
     // Add your delete logic here
-  };
-
-  const handleOnNewPropertyClick = () => {
-    // Handle form submission here (you can send data to the server or perform other actions)
-    navigate('/addnewproperty');
-
-    // After submitting, you can clear the form if needed
-    setRowData({
-      name: '',
-      address: '',
-      pincode: '',
-      rent: '',
-      owner: '',
-      lastpayment: '',
-    });
   };
 
   return (
