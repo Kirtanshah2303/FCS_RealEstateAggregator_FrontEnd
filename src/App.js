@@ -7,11 +7,19 @@ import PropertyForm from './components/PropertyForm';
 import Newhome from './components/Newhome';
 import Ekyc from './components/Ekyc';
 import UserProfile from './components/UserProfile';
+import SellerContract from './components/SellerContract';
 // import Editor from './components/Editor';
 // import Admin from './components/Admin';
+
+//Rent properties pages
+import RentProperty from './components/RentProperty';
+import RentContract from './components/RentContract';
+import AddNewRentedProperty from './components/AddNewRentedProperty';
+import Rent from './components/Rent';
+
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
-import RequireAuth from './components/RequireAuth';
+import RequireAuth from './components/RequireAuth'; 
 import { Routes, Route } from 'react-router-dom';
 
 // const ROLES = {
@@ -44,6 +52,12 @@ function App() {
           <Route path="saleProperty" element={<SaleProperty />} />
           <Route path="addProperty" element={<PropertyForm />} />
           <Route path="userProfile" element={<UserProfile />} />
+          <Route path="sellerContract" element={<SellerContract />} />
+
+          <Route path="/rentProperty" element={<RentProperty/>}/>
+          <Route path="/rentContract" element={<RentContract/>}/>
+          <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
+          <Route path="/rent" element={<Rent/>}/>
         </Route>
 
 

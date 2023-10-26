@@ -26,7 +26,7 @@ const PropertyForm = () => {
         // Handle form submission here, e.g., send data to an API or perform other actions.
         axios.post("http://localhost:8080/api/sell/enter", formData,{
           headers:{
-            "Authorization" : "Bearer "+token
+            "Authorization" : "Bearer "+ token
           }
         }).then((response) => {
           console.log(response);
