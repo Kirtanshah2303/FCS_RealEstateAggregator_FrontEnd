@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
 
-const Contract = () => {
+const Contract = (props) => {
   const [formData, setFormData] = useState({
     dueDatePayment: '',
     firstInstallmentDate: '',
@@ -18,18 +19,31 @@ const Contract = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form Data:"+formData);
     // Handle form submission, e.g., sending the data to an API
+    axios.post(`http://localhost:8080/api/createContract/${props.id}`, formData)
+      .then((response) => {
+        // Handle success, you may want to navigate or show a success message
+        console.log(response);
+        navigate('/');
+      })
+      .catch((error) => {
+        // Handle errors, show an error message, etc.
+        console.error(error);
+      });
   };
 
-  const navigate = useNavigate();
-  const handleContract = () => {
-    // Add code to handle the contract action and navigate to another page.
-    console.log("Contract button clicked");
-    navigate('/');
-  };
+  
+  // const handleContract = () => {
+  //   // Add code to handle the contract action and navigate to another page.
+  //   console.log("Contract button clicked");
+  //   navigate('/');
+  // };
 
   return (
     <div className="text-primary">
@@ -64,37 +78,8 @@ const Contract = () => {
           />
         </div>
       
-        {/* <div>
-          <label>Property Type:</label>
-          <input
-            type="text"
-            name="propertyType"
-            value={formData.propertyType}
-            onChange={handleChange}
-          />
-        </div>
 
-        <div>
-          <label>City:</label>
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Amount:</label>
-          <input
-            type="number"
-            name="rentAmount"
-            value={formData.rentAmount}
-            onChange={handleChange}
-          />
-        </div> */}
-
-        <button className="contract-button mx-3" type="button" onClick={handleContract}>
+        <button className="contract-button mx-3" type="submit">
          Submit
         </button>
       </form>

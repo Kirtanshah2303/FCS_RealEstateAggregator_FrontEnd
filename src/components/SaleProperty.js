@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import React, { useState } from 'react';
-
+import axios from '../api/axios';
 
 
 const SaleProperty = () => {
     const navigate = useNavigate();
-    const [rowData, setRowData] = useState({});
+    const [rowData, setRowData] = useState([]);
 
     const AddProperty = () => {
         navigate('/addProperty');
@@ -29,8 +29,22 @@ const SaleProperty = () => {
 
 
     useEffect(() => {
-        console.log("Inside Page")
-    })
+        // Define an async function to fetch data
+        const fetchData = async () => {
+          try {
+            // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+            const response = await axios.get('http://localhost:8080/api/sell/enter');
+    
+            // Update the rowData state with the fetched data
+            setRowData(response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        };
+    
+        // Call the fetchData function when the component mounts
+        fetchData();
+      }, []);
 
     return (
         <div className="saleContainer">
@@ -70,7 +84,26 @@ const SaleProperty = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+
+                                    {rowData.map((data, index) => (
+                                        <tr key={index}>
+                                            <td>{data.propertyType}</td>
+                                            <td>{data.propertyNumber}</td>
+                                            <td>{data.propertyName}</td>
+                                            <td>{data.societyName}</td>
+                                            <td>{data.landMark}</td>
+                                            <td>{data.propertyArea}</td>
+                                            <td>{data.roomCapacity}</td>
+                                            <td>{data.parking}</td>
+                                            <td>{data.sellAmount}</td>
+                                            {/* Add more table data cells for other properties */}
+                                        </tr>
+                                    ))}
+
+
+
+
+                                        {/* <tr>
                                             <td>
                                                 <input
                                                     type="text"
@@ -169,7 +202,7 @@ const SaleProperty = () => {
                                                     Delete
                                                 </button>
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                     </tbody>
                                 </table>
 
