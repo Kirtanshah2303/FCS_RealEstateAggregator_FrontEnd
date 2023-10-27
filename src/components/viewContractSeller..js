@@ -20,26 +20,6 @@ const Contract = (props) => {
 
   const token = getToken();
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     console.log("Form Data:"+formData);
-//     // Handle form submission, e.g., sending the data to an API
-//     axios.post(`http://localhost:8080/api/createContract/${params.id}`, formData,{
-//       headers:{
-//         "Authorization" : "Bearer "+ token
-//       }
-//     })
-//       .then((response) => {
-//         // Handle success, you may want to navigate or show a success message
-//         console.log(response);
-//         navigate('/saleProperty');
-//       })
-//       .catch((error) => {
-//         // Handle errors, show an error message, etc.
-//         console.error(error);
-//       });
-//   };
 
 useEffect(() => {
     // Define an async function to fetch data
@@ -64,12 +44,6 @@ useEffect(() => {
     fetchData();
   }, []);
 
-  
-  // const handleContract = () => {
-  //   // Add code to handle the contract action and navigate to another page.
-  //   console.log("Contract button clicked");
-  //   navigate('/');
-  // };
 
   return (
     <div className="text-primary">
