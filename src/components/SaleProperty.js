@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import React, { useState } from 'react';
 import axios from '../api/axios';
-
+import {getToken, removeUserSession } from "../Utils/Common";
 
 const SaleProperty = () => {
     const navigate = useNavigate();
     const [rowData, setRowData] = useState([]);
-
+    const token = getToken();
     const AddProperty = () => {
         navigate('/addProperty');
     };
@@ -18,12 +18,24 @@ const SaleProperty = () => {
         setRowData({ ...rowData, [name]: value });
     };
 
-    const handleContractClick = () => {
-        navigate('/sellerContract');
+    const handleContractClick = (event,param) => {
+        navigate('/view/sellerContract/'+param);
     };
 
-    const handleDeleteClick = () => {
-        // Add your delete logic here
+    const handleDeleteClick = async (event,param) => {
+        console.log("param is --> "+param)
+        try {
+            // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+            const response = await axios.delete('http://localhost:8080/api/sell/deleteUnSoldProperty/'+param,{
+                headers:{
+                    "Authorization" : "Bearer "+ token
+                  }
+            });
+            window.location.reload(false);
+            
+          } catch (error) {
+            console.error("Error Deleting data:", error);
+          }
     };
 
 
@@ -33,7 +45,11 @@ const SaleProperty = () => {
         const fetchData = async () => {
           try {
             // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            const response = await axios.get('http://localhost:8080/api/sell/enter');
+            const response = await axios.get('http://localhost:8080/api/sell/getUnsoldProperties',{
+                headers:{
+                    "Authorization" : "Bearer "+ token
+                  }
+            });
     
             // Update the rowData state with the fetched data
             setRowData(response.data);
@@ -67,7 +83,7 @@ const SaleProperty = () => {
                 <div class="row">
                     <div class="leftcolumn">
                         <div class="card">
-                            <h3 style={{ color: 'blue', textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}>Existing Property Details</h3>
+                            <h3 style={{ color: 'blue', textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}>Unsold Property Details</h3>
                             <div className="container rounded bg-white mt-5 mb-5">
                                 <table className="table table-sm table-dark">
                                     <thead>
@@ -81,13 +97,15 @@ const SaleProperty = () => {
                                             <th>BHK</th>
                                             <th>Parking</th>
                                             <th>Sale Amount</th>
+                                            <th>Contract</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                     {rowData.map((data, index) => (
                                         <tr key={index}>
-                                            <td>{data.propertyType}</td>
+                                            <td>{data.typeOfProperty}</td>
                                             <td>{data.propertyNumber}</td>
                                             <td>{data.propertyName}</td>
                                             <td>{data.societyName}</td>
@@ -96,6 +114,23 @@ const SaleProperty = () => {
                                             <td>{data.roomCapacity}</td>
                                             <td>{data.parking}</td>
                                             <td>{data.sellAmount}</td>
+                                            <td>
+                                                <button
+                                                    className="btn btn-primary"
+                                                    onClick={event => handleContractClick(event,data.id)}
+                                                >
+                                                    Contract
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="btn btn-danger"
+                                                    onClick={event => handleDeleteClick(event,data.id)}
+
+                                                >
+                                                    Delete
+                                                </button>
+                                            </td>
                                             {/* Add more table data cells for other properties */}
                                         </tr>
                                     ))}
