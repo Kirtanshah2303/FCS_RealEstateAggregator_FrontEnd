@@ -4,6 +4,7 @@ import {Link, useNavigate } from "react-router-dom";
 import {getToken, removeUserSession } from "../Utils/Common";
 const PropertyForm = () => {
     const [formData, setFormData] = useState({
+      typeOfProperty: '',
       propertyNumber: '',
       propertyName: '',
       societyName: '',
@@ -11,8 +12,7 @@ const PropertyForm = () => {
       propertyArea: '',
       roomCapacity: '',
       parking: false,
-      typeOfProperty: ''
-      // maintenance: '',
+      sellAmount:''
     });
 
     const token = getToken();

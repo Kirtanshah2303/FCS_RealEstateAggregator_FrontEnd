@@ -75,8 +75,8 @@ const SaleProperty = () => {
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    name="propertyName"
-                                                    value={rowData.propertyName || ''}
+                                                    name="propertyType"
+                                                    value={rowData.propertyType || ''}
                                                     onChange={handleInputChange}
                                                 />
                                             </td>
@@ -84,11 +84,21 @@ const SaleProperty = () => {
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    name="propertyType"
-                                                    value={rowData.propertyType || ''}
+                                                    name="propertyNumber"
+                                                    value={rowData.propertyNumber || ''}
                                                     onChange={handleInputChange}
                                                 />
                                             </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="propertyName"
+                                                    value={rowData.propertyName || ''}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </td>
+                                            
                                             <td>
                                                 <input
                                                     type="text"
@@ -102,26 +112,8 @@ const SaleProperty = () => {
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    name="city"
-                                                    value={rowData.city || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="rentAmount"
-                                                    value={rowData.rentAmount || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="yearsOfRent"
-                                                    value={rowData.yearsOfRent || ''}
+                                                    name="landMark"
+                                                    value={rowData.landMark || ''}
                                                     onChange={handleInputChange}
                                                 />
                                             </td>
@@ -138,8 +130,26 @@ const SaleProperty = () => {
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    name="landmark"
-                                                    value={rowData.landmark || ''}
+                                                    name="roomCapacity"
+                                                    value={rowData.roomCapacity || ''}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="parking"
+                                                    value={rowData.parking || ''}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="sellAmount"
+                                                    value={rowData.sellAmount || ''}
                                                     onChange={handleInputChange}
                                                 />
                                             </td>
