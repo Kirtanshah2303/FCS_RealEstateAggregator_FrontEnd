@@ -2,21 +2,29 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import React, { useState } from 'react';
 import axios from '../api/axios';
-import {getToken, removeUserSession } from "../Utils/Common";
+import {getToken } from "../Utils/Common";
 
 const SaleProperty = () => {
     const navigate = useNavigate();
     const [rowData, setRowData] = useState([]);
     const token = getToken();
+
     const AddProperty = () => {
         navigate('/addProperty');
     };
 
+    const handleSoldProperty=() =>{
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setRowData({ ...rowData, [name]: value });
     };
+    const handleDealDoneProperty=() =>{
+
+    };
+
+
+    // const handleInputChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setRowData({ ...rowData, [name]: value });
+    // };
 
     const handleContractClick = (event,param) => {
         navigate('/view/sellerContract/'+param);
@@ -67,16 +75,6 @@ const SaleProperty = () => {
 
             <div class="header">
                 <h2>Sale Property Details</h2>
-                <div class="rightcolumn">
-                    <div class="card">
-                        <button onClick={AddProperty}> Add Property
-                            {/* <Link to="/addProperty">Add Property</Link> */}
-                        </button>
-                        {/* <h4>Add Property</h4> */}
-                        {/* <div class="fakeimg" style="height:100px;">Image</div> */}
-                        {/* <p>Some text about me in culpa qui officia deserunt mollit anim..</p> */}
-                    </div>
-                </div>
             </div>
 
 
@@ -118,131 +116,33 @@ const SaleProperty = () => {
                                                 <button
                                                     className="btn btn-primary"
                                                     onClick={event => handleContractClick(event,data.id)}
-                                                >
-                                                    Contract
+                                                >Contract
                                                 </button>
                                             </td>
                                             <td>
                                                 <button
                                                     className="btn btn-danger"
                                                     onClick={event => handleDeleteClick(event,data.id)}
-
-                                                >
-                                                    Delete
+                                                > Delete
                                                 </button>
                                             </td>
                                             {/* Add more table data cells for other properties */}
                                         </tr>
                                     ))}
 
-
-
-
-                                        {/* <tr>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="propertyType"
-                                                    value={rowData.propertyType || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="propertyNumber"
-                                                    value={rowData.propertyNumber || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="propertyName"
-                                                    value={rowData.propertyName || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="societyName"
-                                                    value={rowData.societyName || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="landMark"
-                                                    value={rowData.landMark || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="propertyArea"
-                                                    value={rowData.propertyArea || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="roomCapacity"
-                                                    value={rowData.roomCapacity || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="parking"
-                                                    value={rowData.parking || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    name="sellAmount"
-                                                    value={rowData.sellAmount || ''}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <button
-                                                    className="btn btn-primary"
-                                                    onClick={handleContractClick}
-                                                >
-                                                    Contract
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button
-                                                    className="btn btn-danger"
-                                                    onClick={handleDeleteClick}
-                                                >
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr> */}
                                     </tbody>
                                 </table>
 
                             </div>
                         </div>
+                    </div>
+                    <div className="rightcolumn">
+                        <div class="card">
+                            <button onClick={AddProperty}> Add Property</button>
+                            <button onClick={handleSoldProperty}> Sold Property</button>
+                            <button onClick={handleDealDoneProperty}> Deal Done Property</button>
+                        </div>
+                        
                     </div>
 
                 </div>
