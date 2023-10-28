@@ -1,100 +1,95 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-const Contract = () => {
+import { useNavigate,useParams } from 'react-router-dom';
+import axios from '../api/axios';
+import {getToken } from "../Utils/Common";
+const Contract = (props) => {
   const [formData, setFormData] = useState({
-    contractStartDate: '',
-    contractEndDate: '',
-    propertyType: '',
-    city: '',
-    rentAmount: '',
-    name: '',
-    address: '',
-    email: '',
-    securityDeposit: '',
+    dueDatePayment: '',
+    firstInstallmentDate: '',
+    firstInstallmentAmount: '',
+    // city: '',
+    // rentAmount: '',
+    // name: '',
+    // address: '',
+    // email: '',
+    // securityDeposit: '',
   });
+
+  // Get ID from URL
+  const params = useParams();
+
+  const token = getToken();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log("Form Data:"+formData);
     // Handle form submission, e.g., sending the data to an API
+    axios.post(`http://localhost:8080/api/createContract/${params.id}`, formData,{
+      headers:{
+        "Authorization" : "Bearer "+ token
+      }
+    })
+      .then((response) => {
+        // Handle success, you may want to navigate or show a success message
+        console.log(response);
+        navigate('/saleProperty');
+      })
+      .catch((error) => {
+        // Handle errors, show an error message, etc.
+        console.error(error);
+      });
   };
 
-  const navigate = useNavigate();
-  const handleContract = () => {
-    // Add code to handle the contract action and navigate to another page.
-    console.log("Contract button clicked");
-    navigate('/');
-  };
+  
+  // const handleContract = () => {
+  //   // Add code to handle the contract action and navigate to another page.
+  //   console.log("Contract button clicked");
+  //   navigate('/');
+  // };
 
   return (
     <div className="text-primary">
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label>Due Date of Payment:</label>
           <input
-            type="text"
-            name="name"
+            type="date"
+            name="dueDatePayment"
             value={formData.name}
             onChange={handleChange}
           />
         </div>
 
         <div>
-          <label>Address:</label>
+          <label>First Installment Date:</label>
           <input
-            type="text"
-            name="address"
+            type="date"
+            name="firstInstallmentDate"
             value={formData.address}
             onChange={handleChange}
           />
         </div>
 
         <div>
-          <label>Email:</label>
+          <label>Installment Amount:</label>
           <input
-            type="email"
-            name="email"
+            type="text"
+            name="firstInstallmentAmount"
             value={formData.email}
             onChange={handleChange}
           />
         </div>
       
-        <div>
-          <label>Property Type:</label>
-          <input
-            type="text"
-            name="propertyType"
-            value={formData.propertyType}
-            onChange={handleChange}
-          />
-        </div>
 
-        <div>
-          <label>City:</label>
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Amount:</label>
-          <input
-            type="number"
-            name="rentAmount"
-            value={formData.rentAmount}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button className="contract-button mx-3" type="button" onClick={handleContract}>
+        <button className="contract-button mx-3" type="submit">
          Submit
         </button>
       </form>

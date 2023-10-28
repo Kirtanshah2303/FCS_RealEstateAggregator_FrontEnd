@@ -8,6 +8,7 @@ import Newhome from './components/Newhome';
 import Ekyc from './components/Ekyc';
 import UserProfile from './components/UserProfile';
 import SellerContract from './components/SellerContract';
+import ViewContractSeller from './components/viewContractSeller.';
 // import Editor from './components/Editor';
 // import Admin from './components/Admin';
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="addProperty" element={<PropertyForm />} />
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="/sellerContract/:id" element={<SellerContract />} />
+          <Route path="/view/sellerContract/:id" element={<ViewContractSeller />} />
 
           <Route path="/rentProperty" element={<RentProperty/>}/>
           <Route path="/rentContract" element={<RentContract/>}/>
