@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Contract = () => {
   const [formData, setFormData] = useState({
-    contractStartDate: '',
-    contractEndDate: '',
+    
     propertyType: '',
     city: '',
     rentAmount: '',
     name: '',
     address: '',
     email: '',
-    securityDeposit: '',
+    
   });
 
   const handleChange = (e) => {

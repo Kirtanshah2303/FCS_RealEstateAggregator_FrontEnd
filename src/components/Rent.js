@@ -105,12 +105,7 @@ const Rent = () => {
                 >
                   Contract
                 </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={handleDeleteClick}
-                >
-                  Delete
-                </button>
+                
               </td>
             </tr>
           </tbody>
