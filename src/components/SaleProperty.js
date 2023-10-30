@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import React, { useState } from 'react';
 import axios from '../api/axios';
 import {getToken } from "../Utils/Common";
@@ -14,9 +14,11 @@ const SaleProperty = () => {
     };
 
     const handleSoldProperty=() =>{
+        navigate('/soldProperty');
 
     };
     const handleDealDoneProperty=() =>{
+        navigate('/dealDoneProperty');
 
     };
 
@@ -110,7 +112,7 @@ const SaleProperty = () => {
                                             <td>{data.landMark}</td>
                                             <td>{data.propertyArea}</td>
                                             <td>{data.roomCapacity}</td>
-                                            <td>{data.parking}</td>
+                                            <td>{data.parking ? 'Yes' : 'No'}</td>
                                             <td>{data.sellAmount}</td>
                                             <td>
                                                 <button

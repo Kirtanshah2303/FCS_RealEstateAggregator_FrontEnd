@@ -25,6 +25,8 @@ import { Routes, Route } from 'react-router-dom';
 import BuyProperty from './components/BuyProperty';
 import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
 import MyPrpertiesPage from './components/MyPrpertiesPage';
+import SoldProperty  from './components/SoldProperty';
+import  DealDoneProperty  from './components/DealDoneProperty';
 
 // const ROLES = {
 //   'User': 2001,
@@ -66,6 +68,8 @@ function App() {
           <Route path="/buyproperty" element={<BuyProperty/>}/>
           <Route path='/sellpropertycontractbuyer' element={<SellPropertyContractbuyer/>}/>
           <Route path='/mypropertiespage'  element={<MyPrpertiesPage/>}/>
+          <Route path='/soldProperty' element={<SoldProperty/>}/>
+          <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
         </Route>
 
 
