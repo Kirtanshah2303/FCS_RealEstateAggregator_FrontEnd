@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from '../api/axios';
+import {getToken } from "../Utils/Common";
 
 const Contract = () => {
   const [formData, setFormData] = useState({
-    contractStartDate: '',
-    contractEndDate: '',
     propertyType: '',
     city: '',
     rentAmount: '',
@@ -13,6 +13,11 @@ const Contract = () => {
     email: '',
     securityDeposit: '',
   });
+   // Get ID from URL
+   const params = useParams();
+
+   const token = getToken();
+   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,15 +27,24 @@ const Contract = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, e.g., sending the data to an API
-   
+   console.log("Form Data:"+formData);
+    // Handle form submission, e.g., sending the data to an API
+    axios.post(`http://localhost:8080/api/createRentalContract/${params.id}`, formData,{
+      headers:{
+        "Authorization" : "Bearer "+ token
+      }
+    })
+      .then((response) => {
+        // Handle success, you may want to navigate or show a success message
+        console.log(response);
+        navigate('/rentProperty');
+      })
+      .catch((error) => {
+        // Handle errors, show an error message, etc.
+        console.error(error);
+      });
   };
-  const navigate = useNavigate();
-  const handleContract = () => {
-    // Add code to handle the contract action and navigate to another page.
-    // You can use react-router to navigate to another page.
-    console.log("hello they clicked a button");
-    navigate('/rentProperty');
-  };
+ 
 
   return (
     <div className="text-primary">
@@ -99,7 +113,7 @@ const Contract = () => {
 
        
 
-        <button className="contract-button mx-3" type="button" onClick={handleContract}>
+        <button className="contract-button mx-3" type="submit">
          Sumbit
         </button>
       </form>

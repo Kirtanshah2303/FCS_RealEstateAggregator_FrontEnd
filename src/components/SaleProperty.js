@@ -110,7 +110,7 @@ const SaleProperty = () => {
                                             <td>{data.landMark}</td>
                                             <td>{data.propertyArea}</td>
                                             <td>{data.roomCapacity}</td>
-                                            <td>{data.parking}</td>
+                                            <td>{data.parking ? 'Yes' : 'No'}</td>
                                             <td>{data.sellAmount}</td>
                                             <td>
                                                 <button

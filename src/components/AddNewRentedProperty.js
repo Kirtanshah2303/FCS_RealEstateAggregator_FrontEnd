@@ -8,11 +8,12 @@ const AddNewRentedProperty = () => {
     propertyName: '',
     typeOfProperty: '',
     societyName: '',
+    landMark: '',
     city: '',
+    pin_code: '',
     rentAmount: '',
     yearsForRent: '',
     propertyArea: '',
-    landMark: '',
     parking: '',
     roomCapacity: '',
     propertyNumber: '',
@@ -26,12 +27,44 @@ const AddNewRentedProperty = () => {
   };
 
   const [formErrors, setFormErrors] = useState({});
-
+  const [errMsg, setErrMsg] = useState('');
   const handleSubmit = (event) => {
     console.log(formData);
     event.preventDefault();
     // Handle form submission here, e.g., send data to an API or perform other actions.
     const errors = {};
+    // Validate rentAmount (digits max 15) and should be greater than 0
+    const rentAmount = parseInt(formData.rentAmount, 10);
+     // Validate rentAmount (digits max 15)
+     if (!/^\d{1,15}$/.test(formData.rentAmount) || rentAmount <= 0) {
+      errors.rentAmount = 'Rent Amount must be a maximum of 15 digits and greater than 0.';
+    }
+
+    // Validate address (max 30 alphanumeric characters)
+    if (!/^[a-zA-Z0-9\s]{1,30}$/.test(formData.landMark)) {
+      errors.landMark = 'Address must be a maximum of 30 alphanumeric characters.';
+    }
+
+    // Validate propertyArea (digits max 5)
+    if (!/^\d{1,5}$/.test(formData.propertyArea)) {
+      errors.propertyArea = 'Property Area must be a maximum of 5 digits.';
+    }
+
+    // Validate roomCapacity (digits max 3)
+    if (!/^\d{1,3}$/.test(formData.roomCapacity)) {
+      errors.roomCapacity = 'Room Capacity must be a maximum of 3 digits.';
+    }
+
+    // Validate propertyNumber (alphanumeric max 10)
+    if (!/^[a-zA-Z0-9]{1,10}$/.test(formData.propertyNumber)) {
+      errors.propertyNumber = 'Property Number must be a maximum of 10 alphanumeric characters.';
+    }
+
+    // Validate pincode (digits exactly 6)
+    if (!/^\d{6}$/.test(formData.pin_code)) {
+      errors.pin_code = 'Pincode must be exactly 6 digits.';
+    }
+
     if (formData.typeOfProperty.trim() === '') {
       errors.typeOfProperty = 'Type of Property is required';
     }
@@ -58,6 +91,9 @@ const AddNewRentedProperty = () => {
     }
     if (formData.landMark.trim() === '') {
       errors.landMark = 'Landmark is required';
+    }
+    if (formData.pin_code.trim() === '') {
+      errors.pin_code = 'Pincode is required';
     }
     if (formData.parking.trim() === '') {
       errors.parking = 'Parking is required';
@@ -92,6 +128,7 @@ const AddNewRentedProperty = () => {
             removeUserSession();
           }
           if(error.response.status === 400){
+            setErrMsg("Address Verification Failed");
             console.log("Address Verification Failed");
           }
         });
@@ -128,12 +165,22 @@ const AddNewRentedProperty = () => {
           <input type="text" name="societyName" required value={formData.societyName} onChange={handleInputChange} />
           {formErrors.societyName && <span style={errorStyle} className="error">{formErrors.societyName}</span>}
         </div>
-
+        <div className="input-field">
+          <label htmlFor="landMark">Landmark</label>
+          <input type="text" name="landMark" required value={formData.landMark} onChange={handleInputChange} />
+          {formErrors.landMark && <span style={errorStyle} className="error">{formErrors.landMark}</span>}
+        </div>
         <div className="input-field">
           <label htmlFor="city">City</label>
           <input type="text" name="city" required value={formData.city} onChange={handleInputChange} />
           {formErrors.city && <span style={errorStyle} className="error">{formErrors.city}</span>}
         </div>
+        <div className="input-field">
+          <label htmlFor="pin_code">Pincode</label>
+          <input type="text" name="pin_code" required value={formData.pin_code} onChange={handleInputChange} />
+          {formErrors.pin_code && <span style={errorStyle} className="error">{formErrors.pin_code}</span>}
+        </div>
+
 
         <div className="input-field">
           <label htmlFor="rentAmount">Rent Amount</label>
@@ -153,11 +200,7 @@ const AddNewRentedProperty = () => {
           {formErrors.propertyArea && <span style={errorStyle} className="error">{formErrors.propertyArea}</span>}
         </div>
 
-        <div className="input-field">
-          <label htmlFor="landMark">Landmark</label>
-          <input type="text" name="landMark" required value={formData.landMark} onChange={handleInputChange} />
-          {formErrors.landMark && <span style={errorStyle} className="error">{formErrors.landMark}</span>}
-        </div>
+        
 
         <div className="input-field">
         <label htmlFor="parking">Parking</label>
@@ -185,6 +228,7 @@ const AddNewRentedProperty = () => {
           {formErrors.propertyNumber && <span style={errorStyle} className="error">{formErrors.propertyNumber}</span>}
         </div>
         <button className='submit-button' type="submit">Submit</button>
+        <span style={errorStyle} className="error">{errMsg}</span>
       </form>
     </div>
   );

@@ -16,7 +16,7 @@ import ViewContractSeller from './components/viewContractSeller.';
 import RentProperty from './components/RentProperty';
 import RentContract from './components/RentContract';
 import AddNewRentedProperty from './components/AddNewRentedProperty';
-import Rent from './components/Rent';
+import Rent from './components/RentedProperty';
 
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
