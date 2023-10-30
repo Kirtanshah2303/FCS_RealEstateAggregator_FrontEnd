@@ -1,58 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
+import { getToken } from "../Utils/Common";
 
 const NonRentedProperty = () => {
   const navigate = useNavigate();
-  const [rowData, setRowData] = useState({
-    propertyName: '',
-    propertyType: '',
-    societyName: '',
-    city: '',
-    rentAmount: '',
-    yearsOfRent: '',
-    propertyArea: '',
-    landmark: '',
-    parking: '', // Added "Parking" field
-    roomCapacity: '', // Added "Room Capacity" field
-    propertyNumber: '', // Added "Property Number" field
-  });
+  const token = getToken();
+  const [rowData, setRowData] = useState([]);
 
   const handleOnRentClick = () => {
     navigate('/rent');
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setRowData({ ...rowData, [name]: value });
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setRowData({ ...rowData, [name]: value });
+  // };
 
   const handleContractClick = () => {
     navigate('/rentContract');
   };
 
-  const handleDeleteClick = () => {
-    // Add your delete logic here
-  };
+  const handleDeleteClick = async (event, param) => {
+    console.log("param is --> " + param)
+    try {
+        // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+         await axios.delete('http://localhost:8080/api/sell/deleteUnSoldProperty/' + param, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+        window.location.reload(false);
+
+    } catch (error) {
+        console.error("Error Deleting data:", error);
+    }
+};
 
   const handleOnNewPropertyClick = () => {
-    // Handle form submission here (you can send data to the server or perform other actions)
     navigate('/addNewRentedProperty');
-
-    // After submitting, you can clear the form if needed
-    setRowData({
-      propertyName: '',
-      propertyType: '',
-      societyName: '',
-      city: '',
-      rentAmount: '',
-      yearsOfRent: '',
-      propertyArea: '',
-      landmark: '',
-      parking: '',
-      roomCapacity: '',
-      propertyNumber: '',
-    });
   };
+
+  
+  useEffect(() => {
+    // Define an async function to fetch data
+    const fetchData = async () => {
+      try {
+        // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+        const response = await axios.get('http://localhost:8080/api/getNonRentedProperties', {
+          headers: {
+            "Authorization": "Bearer " + token
+          }
+        });
+        // Update the rowData state with the fetched data
+        setRowData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Call the fetchData function when the component mounts
+    fetchData();
+  }, []);
+
+
 
   return (
     <div>
@@ -72,126 +83,39 @@ const NonRentedProperty = () => {
               <th>Parking</th>
               <th>Room Capacity</th>
               <th>Property Number</th>
-              <th>Actions</th>
+              <th>Delete</th>
+              <th>Contract</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="propertyName"
-                  value={rowData.propertyName}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="propertyType"
-                  value={rowData.propertyType}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="societyName"
-                  value={rowData.societyName}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="city"
-                  value={rowData.city}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="rentAmount"
-                  value={rowData.rentAmount}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="yearsOfRent"
-                  value={rowData.yearsOfRent}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="propertyArea"
-                  value={rowData.propertyArea}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="landmark"
-                  value={rowData.landmark}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="parking"
-                  value={rowData.parking}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="roomCapacity"
-                  value={rowData.roomCapacity}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="propertyNumber"
-                  value={rowData.propertyNumber}
-                  onChange={handleInputChange}
-                />
-              </td>
-              <td>
-                <button
-                  className="btn btn-primary"
-                  onClick={handleContractClick}
-                >
-                  Contract
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={handleDeleteClick}
-                >
-                  Delete
-                </button>
-               
-              </td>
-            </tr>
+            {rowData.map((data, index) => (
+              <tr key={index}>
+                <td>{data.typeOfProperty}</td>
+                <td>{data.propertyNumber}</td>
+                <td>{data.propertyName}</td>
+                <td>{data.societyName}</td>
+                <td>{data.landMark}</td>
+                <td>{data.propertyArea}</td>
+                <td>{data.roomCapacity}</td>
+                <td>{data.parking}</td>
+                <td>{data.sellAmount}</td>
+                <td>
+                  <button
+                    className="btn btn-primary"
+                    onClick={event => handleContractClick(event, data.id)}
+                  >Contract
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={event => handleDeleteClick(event, data.id)}
+                  > Delete
+                  </button>
+                </td>
+                {/* Add more table data cells for other properties */}
+              </tr>
+            ))}
           </tbody>
         </table>
 

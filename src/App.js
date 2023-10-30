@@ -57,7 +57,7 @@ function App() {
           <Route path="/view/sellerContract/:id" element={<ViewContractSeller />} />
 
           <Route path="/rentProperty" element={<RentProperty/>}/>
-          <Route path="/rentContract" element={<RentContract/>}/>
+          <Route path="/rentContract/:id" element={<RentContract/>}/>
           <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
           <Route path="/rent" element={<Rent/>}/>
         </Route>
