@@ -22,6 +22,9 @@ import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
 import { Routes, Route } from 'react-router-dom';
+import BuyProperty from './components/BuyProperty';
+import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
+import MyPrpertiesPage from './components/MyPrpertiesPage';
 
 // const ROLES = {
 //   'User': 2001,
@@ -60,6 +63,9 @@ function App() {
           <Route path="/rentContract" element={<RentContract/>}/>
           <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
           <Route path="/rent" element={<Rent/>}/>
+          <Route path="/buyproperty" element={<BuyProperty/>}/>
+          <Route path='/sellpropertycontractbuyer' element={<SellPropertyContractbuyer/>}/>
+          <Route path='/mypropertiespage'  element={<MyPrpertiesPage/>}/>
         </Route>
 
 
