@@ -88,10 +88,10 @@ const AddNewRentedProperty = () => {
         })
         .catch((error) => {
           console.log(error.response.status);
-          if (error.response.status == 401) {
+          if (error.response.status === 401) {
             removeUserSession();
           }
-          else if(error.response.status == 400){
+          if(error.response.status === 400){
             console.log("Address Verification Failed");
           }
         });
