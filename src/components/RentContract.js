@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Contract = () => {
   const [formData, setFormData] = useState({
-    
     propertyType: '',
     city: '',
     rentAmount: '',

@@ -13,30 +13,14 @@ const DealDoneProperty = () => {
     navigate('/view/sellerContract/' + param);
   };
 
-  const handleDeleteClick = async (event, param) => {
-    console.log('param is --> ' + param);
-    try {
-      // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-      const response = await axios.delete(
-        'http://localhost:8080/api/sell/deleteUnSoldProperty/' + param,
-        {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
-        }
-      );
-      window.location.reload(false);
-    } catch (error) {
-      console.error('Error Deleting data:', error);
-    }
-  };
+
 
   useEffect(() => {
     // Define an async function to fetch data
     const fetchData = async () => {
       try {
         // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-        const response = await axios.get('http://localhost:8080/api/sell/getUnsoldProperties', {
+        const response = await axios.get('http://localhost:8080/api/sell/getDealDoneProperties', {
           headers: {
             Authorization: 'Bearer ' + token,
           },
@@ -69,6 +53,7 @@ const DealDoneProperty = () => {
               <th>BHK</th>
               <th>Parking</th>
               <th>Sale Amount</th>
+              <th>Due Amount</th>
               <th>Contract</th>
             </tr>
           </thead>
@@ -84,6 +69,7 @@ const DealDoneProperty = () => {
                 <td>{data.roomCapacity}</td>
                 <td>{data.parking ? 'Yes' : 'No'}</td>
                 <td>{data.sellAmount}</td>
+                <td>{data.dueamount}</td>
                 <td>
                   <button
                     className="btn btn-primary"
