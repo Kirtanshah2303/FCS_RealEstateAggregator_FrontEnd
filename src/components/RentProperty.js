@@ -9,7 +9,7 @@ const NonRentedProperty = () => {
   const [rowData, setRowData] = useState([]);
 
   const handleOnRentClick = () => {
-    navigate('/rent');
+    navigate('/rentedProperty');
   };
 
   // const handleInputChange = (e) => {
@@ -17,9 +17,9 @@ const NonRentedProperty = () => {
   //   setRowData({ ...rowData, [name]: value });
   // };
 
-  const handleContractClick = () => {
-    navigate('/rentContract');
-  };
+  const handleContractClick = (event, param) => {
+    navigate('/view/rentContract/' + param);
+};
 
   const handleDeleteClick = async (event, param) => {
     console.log("param is --> " + param)

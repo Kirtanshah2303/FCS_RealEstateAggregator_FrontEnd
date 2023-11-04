@@ -16,8 +16,11 @@ import ViewContractSeller from './components/viewContractSeller.';
 import RentProperty from './components/RentProperty';
 import RentContract from './components/RentContract';
 import AddNewRentedProperty from './components/AddNewRentedProperty';
-import Rent from './components/RentedProperty';
+import RentedProperty from './components/RentedProperty';
 
+
+import ViewPropertyPage from './components/ViewPropertyPage';
+import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
@@ -58,8 +61,14 @@ function App() {
 
           <Route path="/rentProperty" element={<RentProperty/>}/>
           <Route path="/rentContract/:id" element={<RentContract/>}/>
+          <Route path="/view/rentContract/:id" element={<RentContract/>}/>
+
           <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
-          <Route path="/rent" element={<Rent/>}/>
+          <Route path="/rentedProperty" element={<RentedProperty/>}/>
+
+          <Route path='/viewPropertyPage' element={<ViewPropertyPage/>} />
+          <Route path = "/admin" element={<Admin/>} />
+
         </Route>
 
 

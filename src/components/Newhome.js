@@ -9,6 +9,7 @@ import {getToken, removeUserSession } from "../Utils/Common";
 const Navbar= (props) => {
   const title = "Real Estate";
   const aboutText = "eKyc";
+  const aboutAdmin = "Admin";
   const aboutText1 = "Login/SignUp";
   const navigate = useNavigate();
 
@@ -89,11 +90,11 @@ const Navbar= (props) => {
                   {aboutText}
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link to="/login" className="nav-link text-light">
-                  {aboutText1}
+              <li className="nav-item">
+                <Link to="/admin" className="nav-link text-light">
+                  {aboutAdmin}
                 </Link>
-              </li> */}
+              </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input

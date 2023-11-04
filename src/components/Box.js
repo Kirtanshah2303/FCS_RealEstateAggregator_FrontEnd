@@ -23,8 +23,9 @@ const Box = () => {
   };
 
   const handleviewPropertyClick = () => {
-    const url = '#';
-    window.open(url, '_blank');
+    // const url = '#';
+    // window.open(url, '_blank');
+    navigate('/viewPropertyPage');
   };
 
   return (
