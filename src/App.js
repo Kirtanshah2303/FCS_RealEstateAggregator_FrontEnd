@@ -27,6 +27,8 @@ import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
 import MyPrpertiesPage from './components/MyPrpertiesPage';
 import SoldProperty  from './components/SoldProperty';
 import  DealDoneProperty  from './components/DealDoneProperty';
+import ViewPage from './components/ViewPage';
+import Admin from './components/Admin';
 
 // const ROLES = {
 //   'User': 2001,
@@ -70,6 +72,8 @@ function App() {
           <Route path='/mypropertiespage'  element={<MyPrpertiesPage/>}/>
           <Route path='/soldProperty' element={<SoldProperty/>}/>
           <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
+          <Route path='/viewpage' element={<ViewPage/>}/>
+          <Route path='admin' element={<Admin/>}/>
         </Route>
 
 

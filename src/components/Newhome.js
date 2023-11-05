@@ -9,7 +9,9 @@ import {getToken, removeUserSession } from "../Utils/Common";
 const Navbar= (props) => {
   const title = "Real Estate";
   const aboutText = "eKyc";
+  const aboutText2 ="Admin";
   const aboutText1 = "Login/SignUp";
+ 
   const navigate = useNavigate();
 
   let token;
@@ -87,6 +89,11 @@ const Navbar= (props) => {
               <li className="nav-item">
                 <Link to="/ekyc" className="nav-link text-light">
                   {aboutText}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/admin" className="nav-link text-light">
+                  {aboutText2}
                 </Link>
               </li>
               {/* <li className="nav-item">
