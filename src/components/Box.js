@@ -12,7 +12,8 @@ const Box = () => {
   };
 
   const handleBuyPropertyClick = () => {
-    navigate('/buyProperty');
+    const url = '#';
+    window.open(url, '_blank');
   };
 
   const handleRentPropertyClick = () => {
@@ -22,7 +23,9 @@ const Box = () => {
   };
 
   const handleviewPropertyClick = () => {
-   navigate('/viewpage')
+    // const url = '#';
+    // window.open(url, '_blank');
+    navigate('/viewPropertyPage');
   };
 
   return (

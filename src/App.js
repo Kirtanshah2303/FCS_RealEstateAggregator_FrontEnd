@@ -16,19 +16,15 @@ import ViewContractSeller from './components/viewContractSeller.';
 import RentProperty from './components/RentProperty';
 import RentContract from './components/RentContract';
 import AddNewRentedProperty from './components/AddNewRentedProperty';
-import Rent from './components/Rent';
+import RentedProperty from './components/RentedProperty';
 
+
+import ViewPropertyPage from './components/ViewPropertyPage';
+import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
 import { Routes, Route } from 'react-router-dom';
-import BuyProperty from './components/BuyProperty';
-import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
-import MyPrpertiesPage from './components/MyPrpertiesPage';
-import SoldProperty  from './components/SoldProperty';
-import  DealDoneProperty  from './components/DealDoneProperty';
-import ViewPage from './components/ViewPage';
-import Admin from './components/Admin';
 
 // const ROLES = {
 //   'User': 2001,
@@ -64,9 +60,16 @@ function App() {
           <Route path="/view/sellerContract/:id" element={<ViewContractSeller />} />
 
           <Route path="/rentProperty" element={<RentProperty/>}/>
-          <Route path="/rentContract" element={<RentContract/>}/>
+          <Route path="/rentContract/:id" element={<RentContract/>}/>
+          <Route path="/view/rentContract/:id" element={<RentContract/>}/>
+
           <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
-          <Route path="/rent" element={<Rent/>}/>
+          <Route path="/rentedProperty" element={<RentedProperty/>}/>
+
+          <Route path='/viewPropertyPage' element={<ViewPropertyPage/>} />
+          <Route path = "/admin" element={<Admin/>} />
+
+          <Route path="/rent" element={<RentedProperty/>}/>
           <Route path="/buyproperty" element={<BuyProperty/>}/>
           <Route path='/sellpropertycontractbuyer' element={<SellPropertyContractbuyer/>}/>
           <Route path='/mypropertiespage'  element={<MyPrpertiesPage/>}/>

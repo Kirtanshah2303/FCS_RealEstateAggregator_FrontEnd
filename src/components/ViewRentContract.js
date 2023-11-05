@@ -29,7 +29,7 @@ const Contract = () => {
     // Handle form submission, e.g., sending the data to an API
    console.log("Form Data:"+formData);
     // Handle form submission, e.g., sending the data to an API
-    axios.post(`http://localhost:8080/api/createRentalContract/${params.id}`, formData,{
+    axios.get('http://localhost:8080/api/getContractDetails/'+params.id,{
       headers:{
         "Authorization" : "Bearer "+ token
       }
