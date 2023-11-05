@@ -69,6 +69,14 @@ function App() {
           <Route path='/viewPropertyPage' element={<ViewPropertyPage/>} />
           <Route path = "/admin" element={<Admin/>} />
 
+          <Route path="/rent" element={<RentedProperty/>}/>
+          <Route path="/buyproperty" element={<BuyProperty/>}/>
+          <Route path='/sellpropertycontractbuyer' element={<SellPropertyContractbuyer/>}/>
+          <Route path='/mypropertiespage'  element={<MyPrpertiesPage/>}/>
+          <Route path='/soldProperty' element={<SoldProperty/>}/>
+          <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
+          <Route path='/viewpage' element={<ViewPage/>}/>
+          <Route path='admin' element={<Admin/>}/>
         </Route>
 
 

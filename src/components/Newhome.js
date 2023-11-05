@@ -11,6 +11,7 @@ const Navbar= (props) => {
   const aboutText = "eKyc";
   const aboutAdmin = "Admin";
   const aboutText1 = "Login/SignUp";
+ 
   const navigate = useNavigate();
 
   let token;
