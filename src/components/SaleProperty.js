@@ -14,10 +14,10 @@ const SaleProperty = () => {
     };
 
     const handleSoldProperty = () => {
-
+        navigate('/soldProperty');
     };
     const handleDealDoneProperty = () => {
-
+        navigate('/dealDoneProperty');
     };
 
 

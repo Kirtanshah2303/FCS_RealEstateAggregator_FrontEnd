@@ -12,8 +12,9 @@ const Box = () => {
   };
 
   const handleBuyPropertyClick = () => {
-    const url = '#';
-    window.open(url, '_blank');
+    // const url = '#';
+    // window.open(url, '_blank');
+    navigate('/buyProperty');
   };
 
   const handleRentPropertyClick = () => {

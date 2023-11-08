@@ -9,6 +9,10 @@ import Ekyc from './components/Ekyc';
 import UserProfile from './components/UserProfile';
 import SellerContract from './components/SellerContract';
 import ViewContractSeller from './components/viewContractSeller.';
+import ViewPage from './components/ViewPage';
+import BuyProperty from './components/BuyProperty';
+import DealDoneProperty from './components/DealDoneProperty';
+import SoldProperty from './components/SoldProperty';
 // import Editor from './components/Editor';
 // import Admin from './components/Admin';
 
@@ -20,6 +24,9 @@ import RentedProperty from './components/RentedProperty';
 
 
 import ViewPropertyPage from './components/ViewPropertyPage';
+import MyPropertiesPage from './components/MyPropertiesPage';
+import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
+
 import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
@@ -71,8 +78,8 @@ function App() {
 
           <Route path="/rent" element={<RentedProperty/>}/>
           <Route path="/buyproperty" element={<BuyProperty/>}/>
-          <Route path='/sellpropertycontractbuyer' element={<SellPropertyContractbuyer/>}/>
-          <Route path='/mypropertiespage'  element={<MyPrpertiesPage/>}/>
+          <Route path='/sellpropertycontractbuyer/:id' element={<SellPropertyContractbuyer/>}/>
+          <Route path='/mypropertiespage'  element={<MyPropertiesPage/>}/>
           <Route path='/soldProperty' element={<SoldProperty/>}/>
           <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
           <Route path='/viewpage' element={<ViewPage/>}/>
