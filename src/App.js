@@ -8,6 +8,11 @@ import Newhome from './components/Newhome';
 import Ekyc from './components/Ekyc';
 import UserProfile from './components/UserProfile';
 import SellerContract from './components/SellerContract';
+import ViewContractSeller from './components/viewContractSeller.';
+import ViewPage from './components/ViewPage';
+import BuyProperty from './components/BuyProperty';
+import DealDoneProperty from './components/DealDoneProperty';
+import SoldProperty from './components/SoldProperty';
 // import Editor from './components/Editor';
 // import Admin from './components/Admin';
 
@@ -15,8 +20,14 @@ import SellerContract from './components/SellerContract';
 import RentProperty from './components/RentProperty';
 import RentContract from './components/RentContract';
 import AddNewRentedProperty from './components/AddNewRentedProperty';
-import Rent from './components/Rent';
+import RentedProperty from './components/RentedProperty';
 
+
+import ViewPropertyPage from './components/ViewPropertyPage';
+import MyPropertiesPage from './components/MyPropertiesPage';
+import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
+
+import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
@@ -53,11 +64,26 @@ function App() {
           <Route path="addProperty" element={<PropertyForm />} />
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="/sellerContract/:id" element={<SellerContract />} />
+          <Route path="/view/sellerContract/:id" element={<ViewContractSeller />} />
 
           <Route path="/rentProperty" element={<RentProperty/>}/>
-          <Route path="/rentContract" element={<RentContract/>}/>
+          <Route path="/rentContract/:id" element={<RentContract/>}/>
+          <Route path="/view/rentContract/:id" element={<RentContract/>}/>
+
           <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
-          <Route path="/rent" element={<Rent/>}/>
+          <Route path="/rentedProperty" element={<RentedProperty/>}/>
+
+          <Route path='/viewPropertyPage' element={<ViewPropertyPage/>} />
+          <Route path = "/admin" element={<Admin/>} />
+
+          <Route path="/rent" element={<RentedProperty/>}/>
+          <Route path="/buyproperty" element={<BuyProperty/>}/>
+          <Route path='/sellpropertycontractbuyer/:id' element={<SellPropertyContractbuyer/>}/>
+          <Route path='/mypropertiespage'  element={<MyPropertiesPage/>}/>
+          <Route path='/soldProperty' element={<SoldProperty/>}/>
+          <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
+          <Route path='/viewpage' element={<ViewPage/>}/>
+          <Route path='admin' element={<Admin/>}/>
         </Route>
 
 

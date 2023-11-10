@@ -18,14 +18,14 @@
   /* Left column */
   .leftcolumn {
     float: left;
-    width: 100%;
+    width: 80%;
   }
   
   /* Right column */
   .rightcolumn {
     float: right;
-    margin-top: -80px;
-    /* width: 25%; */
+    /* margin-top: -80px; */
+    width: 20%;
   }
   
   /* Fake image */
