@@ -26,12 +26,19 @@ import RentedProperty from './components/RentedProperty';
 import ViewPropertyPage from './components/ViewPropertyPage';
 import MyPropertiesPage from './components/MyPropertiesPage';
 import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
+import ViewUserAdmin from './components/ViewUserAdmin';
+import DeletePropertyAdmin from './components/DeleteRentedPropertyAdmin';
+import ViewMyRentedProperty from './components/ViewMyRentedProperty';
 
 import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
 import { Routes, Route } from 'react-router-dom';
+import SellPropertyAdmin from './components/DeleteSalePropertyAdmin';
+
+
+
 
 // const ROLES = {
 //   'User': 2001,
@@ -84,6 +91,10 @@ function App() {
           <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
           <Route path='/viewpage' element={<ViewPage/>}/>
           <Route path='admin' element={<Admin/>}/>
+          <Route path='/viewuseradmin' element={<ViewUserAdmin/>}/>
+          <Route path='/sellpropertyadmin' element={<SellPropertyAdmin/>}/>
+          <Route path='/deletepropertyadmin' element={<DeletePropertyAdmin/>}/>
+          <Route path='/viewmyrentedproperty' element={<ViewMyRentedProperty/>}/>
         </Route>
 
 
