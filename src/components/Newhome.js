@@ -10,6 +10,7 @@ const Navbar= (props) => {
   const title = "Real Estate";
   const aboutText = "eKyc";
   const aboutAdmin = "Admin";
+  const aboutPayment = "Payment";
   const aboutText1 = "Login/SignUp";
  
   const navigate = useNavigate();
@@ -94,6 +95,11 @@ const Navbar= (props) => {
               <li className="nav-item">
                 <Link to="/admin" className="nav-link text-light">
                   {aboutAdmin}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/payment" className="nav-link text-light">
+                  {aboutPayment}
                 </Link>
               </li>
             </ul>

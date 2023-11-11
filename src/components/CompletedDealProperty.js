@@ -1,32 +1,24 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import { getToken } from "../Utils/Common";
 
-const BuyProperty = () => {
+const CompletedDealProperty = () => {
+
   const navigate = useNavigate();
   const [rowData, setRowData] = useState([]);
   const token = getToken();
 
-  const handleCompletedDealProperty = () => {
-    navigate('/completedDealProperty')
-  };
-
-  const handleOngoingDealProperty = () => {
-    navigate('/ongoingDealProperty')
-  };
-
   const handleContractClick = (event, param) => {
-    navigate(`/sellpropertycontractbuyer/${param}`);
-};
-
+    navigate('/view/sellerContract/' + param);
+  };
 
   useEffect(() => {
     // Define an async function to fetch data
     const fetchData = async () => {
         try {
             // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            const response = await axios.get('http://localhost:8080/api/sell/getUnsoldPropertiesForBuyer', {
+            const response = await axios.get('http://localhost:8080/api/sell/getMyPropertiesAsBuyer', {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -43,13 +35,11 @@ const BuyProperty = () => {
     fetchData();
 }, []);
 
- 
-
   return (
     <div>
-      <h1>Buy Property</h1>
+      <h1>Completed Deal Properties List</h1>
       <div className="container rounded bg-white mt-5 mb-5">
-        <table className="table table-sm table-dark">
+        <table className="table table-sm table-danger">
           <thead>
             <tr>
               <th>Type of Property</th>
@@ -61,8 +51,8 @@ const BuyProperty = () => {
               <th>BHK</th>
               <th>Parking</th>
               <th>Sale Amount</th>
+              <th>Deal Done Date</th>
               <th>Contract</th>
-
             </tr>
           </thead>
           <tbody>
@@ -77,6 +67,7 @@ const BuyProperty = () => {
                     <td>{data.roomCapacity}</td>
                     <td>{data.parking ? 'Yes' : 'No'}</td>
                     <td>{data.sellAmount}</td>
+                    <td>{data.dealDoneDate}</td>
                     <td>
                         <button
                             className="btn btn-primary"
@@ -89,32 +80,9 @@ const BuyProperty = () => {
             ))}
           </tbody>
         </table>
-
-        <div className="row mt-3 justify-content-end">
-        <div className="col-md-6">
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={handleOngoingDealProperty}
-            >
-              Ongoing Deal Property
-            </button>
-          </div>
-          <div className="col-md-6">
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={handleCompletedDealProperty}
-            >
-              Completed Deal Property
-            </button>
-          </div>
-
-          
-        </div>
       </div>
     </div>
   );
 };
 
-export default BuyProperty;
+export default CompletedDealProperty;
