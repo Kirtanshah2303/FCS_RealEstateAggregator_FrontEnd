@@ -1,6 +1,30 @@
-import React from 'react';
-
+import React,{useState, useEffect} from 'react';
+import axios from '../api/axios';
+import { getToken } from '../Utils/Common';
 const UserProfile = () => {
+
+  const token = getToken();
+  const [rowData, setRowData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("Inside fetchData")
+        // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+        const response = await axios.get('http://localhost:8080/api/account', {
+          headers: {
+            Authorization: 'Bearer ' + token,
+          },
+        });
+        setRowData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [token]);
+
   return (
     <div className="container rounded bg-white mt-5 mb-5">
       <div className="row">

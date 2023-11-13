@@ -16,14 +16,31 @@ const SellPropertyContractbuyer = () => {
   const [firstInstallmentDate, setFirstInstallmentDate] = useState('');
   const [firstInstallmentAmount, setFirstInstallmentAmount] = useState('');
   const [dueDateOfPayment, setDueDateOfPayment] = useState('');
+  const [id, setId] = useState(0);
 
   const handleAcknowledgmentChange = (e) => {
     setAcknowledgment(e.target.checked);
   };
 
   const handleSendOTP = () => {
+    console.log("inside send otp");
     if (acknowledgment) {
       // Generate and send OTP logic here.
+        // Handle form submission, e.g., sending the data to an API
+    axios.post(`http://localhost:8080/api/generateBuyerOTP/${id}`,{},{
+      headers:{
+        "Authorization" : "Bearer "+ token
+      }
+    })
+      .then((response) => {
+        // Handle success, you may want to navigate or show a success message
+        console.log(response);
+        alert("Otp generated successfully! Kindly check your mail");
+      })
+      .catch((error) => {
+        // Handle errors, show an error message, etc.
+        console.error(error);
+      });
       setOtpSent(true);
     } else {
       alert("Please acknowledge the terms before sending OTP.");
@@ -37,8 +54,25 @@ const SellPropertyContractbuyer = () => {
   const handleSubmit = () => {
     if (acknowledgment && otp) {
       // Add your submission logic here.
-      setSubmitted(true);
-      navigate('/mypropertiespage'); // Navigate to mypropertiespage
+      axios.post(`http://localhost:8080/api/validateBuyerOTP/${id}`,{"otp": otp},{
+      headers:{
+        "Authorization" : "Bearer "+ token
+      }
+    })
+      .then((response) => {
+        // Handle success, you may want to navigate or show a success message
+        console.log(response);
+        setSubmitted(true);
+        navigate('/buyProperty');
+        alert("Otp generated successfully! Kindly check your mail");
+      })
+      .catch((error) => {
+        // Handle errors, show an error message, etc.
+        alert("Error: " + "Invalid OTP Entered!")
+        console.error(error);
+      });
+      
+       // Navigate back to buy property page
     } else {
       alert("Please enter the OTP and acknowledge the terms before submitting.");
     }
@@ -60,6 +94,7 @@ const SellPropertyContractbuyer = () => {
             setFirstInstallmentDate(response.data.firstInstallmentDate);
             setFirstInstallmentAmount(response.data.firstInstallmentAmount);
             setDueDateOfPayment(response.data.dueDatePayment);
+            setId(response.data.id);
         } catch (error) {
             console.error("Error fetching data:", error);
         }

@@ -12,7 +12,9 @@ const Viewpage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8086/api/getNotRentedProperties', {
+        console.log("Inside fetchData")
+        // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+        const response = await axios.get('http://localhost:8080/api/getNotRentedProperties', {
           headers: {
             Authorization: 'Bearer ' + token,
           },

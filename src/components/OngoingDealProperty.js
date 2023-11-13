@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import { getToken } from "../Utils/Common";
 
-const MyPropertiesPage = () => {
+const OngoingDealProperty = () => {
 
   const navigate = useNavigate();
   const [rowData, setRowData] = useState([]);
   const token = getToken();
 
-  const handleContractClick = () => {
-    navigate('/view/sellerContract/');
+  const handleContractClick = (event, param) => {
+    navigate('/view/sellerContract/' + param);
   };
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const MyPropertiesPage = () => {
     const fetchData = async () => {
         try {
             // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            const response = await axios.get('http://localhost:8080/api/sell/getUnsoldProperties', {
+            const response = await axios.get('http://localhost:8080/api/sell/', {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -37,7 +37,7 @@ const MyPropertiesPage = () => {
 
   return (
     <div>
-      <h1>My Properties Page</h1>
+      <h1>Ongoing Deal Properties List</h1>
       <div className="container rounded bg-white mt-5 mb-5">
         <table className="table table-sm table-danger">
           <thead>
@@ -52,6 +52,7 @@ const MyPropertiesPage = () => {
               <th>Parking</th>
               <th>Sale Amount</th>
               <th>Deal Done Date</th>
+              <th>Contract</th>
             </tr>
           </thead>
           <tbody>
@@ -84,4 +85,4 @@ const MyPropertiesPage = () => {
   );
 };
 
-export default MyPropertiesPage;
+export default OngoingDealProperty;

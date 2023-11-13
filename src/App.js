@@ -25,13 +25,17 @@ import RentedProperty from './components/RentedProperty';
 import ViewRentContract from './components/ViewRentContract'
 
 import ViewPropertyPage from './components/ViewPropertyPage';
-import MyPropertiesPage from './components/MyPropertiesPage';
+import CompletedDealProperty from './components/CompletedDealProperty';
+import OngoingDealProperty from './components/OngoingDealProperty';
 import SellPropertyContractbuyer from './components/SellPropertyContractbuyer';
 import ViewUserAdmin from './components/ViewUserAdmin';
 import DeletePropertyAdmin from './components/DeleteRentedPropertyAdmin';
 import ViewMyRentedProperty from './components/ViewMyRentedProperty';
 
 import Admin from './components/Admin';
+
+
+import PaymentPage from './components/PaymentPage';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
@@ -82,20 +86,28 @@ function App() {
           <Route path="/rentedProperty" element={<RentedProperty/>}/>
 
           <Route path='/viewPropertyPage' element={<ViewPropertyPage/>} />
-          <Route path = "/admin" element={<Admin/>} />
+
 
           <Route path="/rent" element={<RentedProperty/>}/>
           <Route path="/buyproperty" element={<BuyProperty/>}/>
           <Route path='/sellpropertycontractbuyer/:id' element={<SellPropertyContractbuyer/>}/>
-          <Route path='/mypropertiespage'  element={<MyPropertiesPage/>}/>
+          <Route path='/completedDealProperty'  element={<CompletedDealProperty/>}/>
+          <Route path='/ongoingDealProperty'  element={<OngoingDealProperty/>}/>
           <Route path='/soldProperty' element={<SoldProperty/>}/>
           <Route path='/dealDoneProperty' element={<DealDoneProperty/>}/>
           <Route path='/viewpage' element={<ViewPage/>}/>
-          <Route path='admin' element={<Admin/>}/>
+
+          
+          <Route path='/admin' element={<Admin/>}/>
           <Route path='/viewuseradmin' element={<ViewUserAdmin/>}/>
           <Route path='/sellpropertyadmin' element={<SellPropertyAdmin/>}/>
           <Route path='/deletepropertyadmin' element={<DeletePropertyAdmin/>}/>
           <Route path='/viewmyrentedproperty' element={<ViewMyRentedProperty/>}/>
+
+          <Route path='/payment' element={<PaymentPage/>}/>
+
+
+
         </Route>
 
 

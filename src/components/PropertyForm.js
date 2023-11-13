@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { getToken, removeUserSession } from "../Utils/Common";
 const PropertyForm = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +27,46 @@ const PropertyForm = () => {
     event.preventDefault();
     // Handle form submission here, e.g., send data to an API or perform other actions.
     const errors = {};
+
+     // Validate propertyNumber (alphanumeric max 10)
+     if (!/^[a-zA-Z]{1,15}$/.test(formData.typeOfProperty)) {
+      errors.typeOfProperty = 'Property must be a string for e.g ("bungalow, flat")';
+    }
+
+     // Validate propertyNumber (alphanumeric max 10)
+     if (!/^[a-zA-Z0-9]{1,10}$/.test(formData.propertyNumber)) {
+      errors.propertyNumber = 'Property Number must be a maximum of 10 alphanumeric characters.';
+    }
+     // Validate propertyNumber (alphanumeric max 10)
+     if (!/^[a-zA-Z0-9]{1,50}$/.test(formData.propertyName)) {
+      errors.propertyName = 'No Special Character and cannot exceeds 50 alphanumeric characters';
+    }
+     // Validate propertyNumber (alphanumeric max 10)
+     if (!/^[a-zA-Z0-9]{1,50}$/.test(formData.societyName)) {
+      errors.societyName = 'No Special Character and cannot exceeds 50 alphanumeric characters';
+    }
+     // Validate address (max 30 alphanumeric characters)
+     if (!/^[a-zA-Z0-9\s]{1,30}$/.test(formData.landMark)) {
+      errors.landMark = 'Address must be a maximum of 30 alphanumeric characters.';
+    }
+    // Validate propertyArea (digits max 5)
+    if (!/^\d{1,5}$/.test(formData.propertyArea)) {
+      errors.propertyArea = 'Property Area must be a maximum of 5 digits.';
+    }
+
+    // Validate roomCapacity (digits max 3)
+    if (!/^\d{1,3}$/.test(formData.roomCapacity)) {
+      errors.roomCapacity = 'Room Capacity must be a maximum of 3 digits.';
+    }
+    // Validate rentAmount (digits max 10) and should be greater than 0
+    const sellAmount = parseInt(formData.sellAmount, 10);
+     // Validate rentAmount (digits max 15)
+     if (!/^\d{1,10}$/.test(formData.sellAmount) || sellAmount <= 0) {
+      errors.sellAmount = 'Aukat ke Bahar';
+    }
+
+   
+
     if (formData.typeOfProperty.trim() === '') {
       errors.typeOfProperty = 'Type of Property is required';
     }
@@ -88,6 +128,7 @@ const PropertyForm = () => {
           <input
             type="text"
             name="typeOfProperty"
+            placeholder='Bungalow, flat ...'
             value={formData.typeOfProperty}
             onChange={handleInputChange}
             required

@@ -14,9 +14,9 @@ const AddNewRentedProperty = () => {
     rentAmount: '',
     yearsForRent: '',
     propertyArea: '',
-    parking: '',
+    parking: 'false',
     roomCapacity: '',
-    propertyNumber: '',
+    propertyNumber: ''
   });
   const token = getToken();
   const navigate =useNavigate();

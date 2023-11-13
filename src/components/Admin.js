@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from '../api/axios';
+import { getToken } from '../Utils/Common';
 import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
   const navigate = useNavigate();
+  const token = getToken();
+  useEffect(async () => {
+    try {
+      console.log("Inside fetchData")
+      // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+      const response = await axios.get('http://localhost:8080/api/admin/getTheAdminValidation', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+    } catch (error) {
+      navigate("/")
+      alert("You are not admin!")
+      console.error('Error fetching data:', error);
+    }
+  })
 
   const handleButtonClickreport = (action) => {
     navigate('/mypropertiespage');
