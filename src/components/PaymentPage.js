@@ -1,25 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { getToken } from "../Utils/Common";
+import axios from '../api/axios';
 
 const PaymentPage = () => {
   const [paySuccess, setPaySuccess] = useState(false);
  
-  useEffect(() => {
-    // Load Razorpay script dynamically
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
+  // useEffect(() => {
+  //   // Load Razorpay script dynamically
+  //   const script = document.createElement('script');
+  //   script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+  //   script.async = true;
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
-  const handlePayment = () => {
+
+  const loadScript = (src) => {
+    return new Promise((resovle) => {
+      const script = document.createElement("script");
+      script.src = src;
+
+      script.onload = () => {
+        resovle(true);
+      };
+
+      script.onerror = () => {
+        resovle(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const handlePayment = async () => {
     // Make API call to get payment details (rentalPayAmount, rentalPaidDate, paidBy, paidTo)
     // For simplicity, let's assume you have an API endpoint '/api/getPaymentDetails' that returns the required data
     
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("You are offline... Failed to load Razorpay SDK");
+      return;
+    }
+
+
     const token = getToken();
     fetch('http://localhost:8080/api/payRent/'+ '1',{
         headers:{
@@ -51,8 +80,10 @@ const PaymentPage = () => {
           handler: function (response) {
             // Handle success
             setPaySuccess(true);
+            alert(response.razorpay_payment_id);
+            alert("Payment successful");
             console.log(response);
-          },
+          }
         };
 
         const rzp = new window.Razorpay(options);

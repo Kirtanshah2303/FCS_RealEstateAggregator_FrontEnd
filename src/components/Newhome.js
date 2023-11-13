@@ -4,7 +4,7 @@ import {Link, useNavigate } from "react-router-dom";
 // import { useLocation } from 'react-router-dom';
 import Box from "./Box";
 import Footer from "./Footer";
-import {getToken, removeUserSession } from "../Utils/Common";
+import {getToken, getUser, removeUserSession } from "../Utils/Common";
 
 const Navbar= (props) => {
   const title = "Real Estate";
@@ -12,21 +12,20 @@ const Navbar= (props) => {
   const aboutAdmin = "Admin";
   const aboutPayment = "Payment";
   const aboutText1 = "Login/SignUp";
- 
+  const [user, setUser] = useState([]);
   const navigate = useNavigate();
 
   let token;
-  let user;
 
   useEffect(() => {
      token = getToken();
-     user = "Devkul";
+     setUser(getUser());
      if(token){
-      console.log("You are logged In");
+      
       setIsLoggedIn(true);
     }
 }, [])
-
+console.log("You are logged In--->"+user);
   // Initialize user and isLoggedIn state
   // const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -122,7 +121,8 @@ const Navbar= (props) => {
               {isLoggedIn ? (
                 <>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-light" onClick={userProfile}>User</button>
+                <button className="btn btn-link nav-link text-light" onClick={userProfile}>
+                  {user}</button>
                 </li>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link text-light" onClick={handleLogout}>
