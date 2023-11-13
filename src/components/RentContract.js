@@ -5,13 +5,8 @@ import {getToken } from "../Utils/Common";
 
 const Contract = () => {
   const [formData, setFormData] = useState({
-    propertyType: '',
-    city: '',
-    rentAmount: '',
-    name: '',
-    address: '',
-    email: '',
-    securityDeposit: '',
+    monthlyRentDate: '',
+    securityDepositAmount: ''
   });
    // Get ID from URL
    const params = useParams();
@@ -41,7 +36,13 @@ const Contract = () => {
       })
       .catch((error) => {
         // Handle errors, show an error message, etc.
-        console.error(error);
+        console.error("Testtt-----------"+JSON.stringify(error));
+
+        if(error.message = "Request failed with status code 403"){
+          alert("Contract is already created for this property!!");
+        }
+
+        
       });
   };
  
@@ -52,67 +53,26 @@ const Contract = () => {
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label>Monthly Rent Due Date</label>
           <input
-            type="text"
-            name="name"
-            value={formData.name}
+            type="date"
+            name="monthlyRentDate"
+            value={formData.monthlyRentDate}
             onChange={handleChange}
           />
         </div>
 
         <div>
-          <label>Address:</label>
+          <label>Security Deposite Amount</label>
           <input
             type="text"
-            name="address"
-            value={formData.address}
+            name="securityDepositAmount"
+            value={formData.securityDepositAmount}
             onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
       
-        <div>
-          <label>Property Type:</label>
-          <input
-            type="text"
-            name="propertyType"
-            value={formData.propertyType}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>City:</label>
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Rent Amount:</label>
-          <input
-            type="number"
-            name="rentAmount"
-            value={formData.rentAmount}
-            onChange={handleChange}
-          />
-        </div>
-
-       
-
         <button className="contract-button mx-3" type="submit">
          Sumbit
         </button>

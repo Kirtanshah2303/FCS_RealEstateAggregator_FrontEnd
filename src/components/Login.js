@@ -53,7 +53,7 @@ const Login = (props) => {
             );
             // console.log(JSON.stringify(response?.data));
             console.log(response.data.id_token);
-            const idToken = response.data.id_token;
+            const idToken = response.data.id_token.id_token;
             //Session Storage
             setUserSession(idToken, user);
             // Save the id_token to local storage

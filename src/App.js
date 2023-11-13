@@ -22,6 +22,7 @@ import RentContract from './components/RentContract';
 import AddNewRentedProperty from './components/AddNewRentedProperty';
 import RentedProperty from './components/RentedProperty';
 
+import ViewRentContract from './components/ViewRentContract'
 
 import ViewPropertyPage from './components/ViewPropertyPage';
 import MyPropertiesPage from './components/MyPropertiesPage';
@@ -75,7 +76,7 @@ function App() {
 
           <Route path="/rentProperty" element={<RentProperty/>}/>
           <Route path="/rentContract/:id" element={<RentContract/>}/>
-          <Route path="/view/rentContract/:id" element={<RentContract/>}/>
+          <Route path="/view/rentContract/:id" element={<ViewRentContract/>}/>
 
           <Route path="/addNewRentedProperty" element={<AddNewRentedProperty/>} />
           <Route path="/rentedProperty" element={<RentedProperty/>}/>
