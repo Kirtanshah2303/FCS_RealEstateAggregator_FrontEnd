@@ -52,10 +52,12 @@ const Login = (props) => {
                 }
             );
             // console.log(JSON.stringify(response?.data));
-            console.log(response.data.id_token);
-            const idToken = response.data.id_token;
+            // console.log(response.data);
+
+            const idToken = response.data.id_token.id_token;
+            const username = response.data.username;
             //Session Storage
-            setUserSession(idToken, user);
+            setUserSession(idToken, username);
             // Save the id_token to local storage
             // localStorage.setItem('id_token', idToken);
             // localStorage.setItem('user', user);

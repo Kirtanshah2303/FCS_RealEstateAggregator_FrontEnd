@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios';
 import { getToken } from '../Utils/Common';
 import { useNavigate } from 'react-router-dom';
 
-const Viewpage = () => {
+const ViewMyRentedProperty = () => {
   const navigate = useNavigate();
   const token = getToken();
   const [rowData, setRowData] = useState([]);
@@ -12,9 +11,7 @@ const Viewpage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("Inside fetchData")
-        // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-        const response = await axios.get('http://localhost:8080/api/getNotRentedProperties', {
+        const response = await axios.get('http://localhost:8086/api/getNotRentedProperties', {
           headers: {
             Authorization: 'Bearer ' + token,
           },
@@ -28,20 +25,15 @@ const Viewpage = () => {
     fetchData();
   }, [token]);
 
-  const handleMyRentedPropertyClick = () => {
-    navigate('/viewmyrentedproperty');
+  const handlePayClick = () => {
+    // Add your payment logic here, e.g., navigate to a payment page
+    navigate('/payment');
   };
 
   return (
     <div className="saleContainer">
       <div className="header">
-        <h2>View Page Details</h2>
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginRight: '150px' }}>
-        <button className="btn btn-primary" onClick={handleMyRentedPropertyClick}>
-          My Rented Property
-        </button>
+        <h2>My rented property View Page Details</h2>
       </div>
 
       <div className="row">
@@ -65,6 +57,7 @@ const Viewpage = () => {
                     <th>Rent Amount</th>
                     <th>Type of Property</th>
                     <th>Lessee Name</th>
+                    <th>Payment</th>
                   </tr>
                 </thead>
 
@@ -82,6 +75,11 @@ const Viewpage = () => {
                       <td>{data.rentAmount}</td>
                       <td>{data.typeOfProperty}</td>
                       <td>{data.lesseeName}</td>
+                      <td>
+                        <button className="btn btn-primary" onClick={handlePayClick}>
+                          Pay
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -94,4 +92,4 @@ const Viewpage = () => {
   );
 };
 
-export default Viewpage;
+export default ViewMyRentedProperty;

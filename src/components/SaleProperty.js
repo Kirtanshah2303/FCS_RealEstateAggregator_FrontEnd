@@ -152,5 +152,5 @@ const SaleProperty = () => {
 
 
     )
-}
+};
 export default SaleProperty
