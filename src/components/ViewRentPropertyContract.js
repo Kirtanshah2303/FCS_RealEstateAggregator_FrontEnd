@@ -73,7 +73,7 @@ const ViewRentPropertyContract = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/getContractDetails/${params.id}`, {
+        const response = await axios.get(`http://localhost:8080/api/viewRentalContract/${params.id}`, {
           headers: {
             "Authorization": "Bearer " + token
           }

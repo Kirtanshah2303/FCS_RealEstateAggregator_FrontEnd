@@ -142,6 +142,9 @@ const AddNewRentedProperty = () => {
 
   return (
     <div className="property-form-container">
+      <a className="navbar-brand" href="/">
+            HOME
+          </a>
       <h3 style={{ fontSize: '25px', color: 'blue', textAlign: 'center', fontWeight: '500' }}>
         Non-Rented Property Information
       </h3>
