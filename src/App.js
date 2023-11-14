@@ -41,6 +41,7 @@ import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
 import { Routes, Route } from 'react-router-dom';
 import SellPropertyAdmin from './components/DeleteSalePropertyAdmin';
+import ViewRentPropertyContract from './components/ViewRentPropertyContract';
 
 
 
@@ -103,6 +104,7 @@ function App() {
           <Route path='/sellpropertyadmin' element={<SellPropertyAdmin/>}/>
           <Route path='/deletepropertyadmin' element={<DeletePropertyAdmin/>}/>
           <Route path='/viewmyrentedproperty' element={<ViewMyRentedProperty/>}/>
+          <Route path='/rentpropertycontractrental/:id' element={<ViewRentPropertyContract/>}/>
 
           <Route path='/payment' element={<PaymentPage/>}/>
 

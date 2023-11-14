@@ -32,6 +32,11 @@ const Viewpage = () => {
     navigate('/viewmyrentedproperty');
   };
 
+  const handleContractClick = (event, param) => {
+    navigate(`/rentpropertycontractrental/${param}`);
+};
+
+
   return (
     <div className="saleContainer">
       <div className="header">
@@ -65,6 +70,7 @@ const Viewpage = () => {
                     <th>Rent Amount</th>
                     <th>Type of Property</th>
                     <th>Lessee Name</th>
+                    <th>Contract</th>
                   </tr>
                 </thead>
 
@@ -82,6 +88,13 @@ const Viewpage = () => {
                       <td>{data.rentAmount}</td>
                       <td>{data.typeOfProperty}</td>
                       <td>{data.lesseeName}</td>
+                      <td>
+                        <button
+                            className="btn btn-primary"
+                            onClick={event => handleContractClick(event, data.id)}
+                        >Contract
+                        </button>
+                    </td>
                     </tr>
                   ))}
                 </tbody>
