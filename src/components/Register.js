@@ -104,7 +104,7 @@ const Register = () => {
         formData.append('email', email);
         formData.append('password', pwd);
         formData.append('aadhar', aadhar);
-        formData.append('document', document);
+        formData.append('file', document);
 
         try {
             const response = await axios.post(REGISTER_URL, formData, {
