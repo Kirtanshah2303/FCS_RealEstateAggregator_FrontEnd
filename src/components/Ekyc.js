@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from '../api/axios';
+import { getToken } from "../Utils/Common";
 const eKyc_URL = "https://192.168.3.39:5000/kyc";
 
 const Ekyc = () => {
@@ -20,6 +21,8 @@ const Ekyc = () => {
   const [errMsg, setErrMsg] = useState('');
   const errRef = useRef();
 
+  const token = getToken();
+
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
 
@@ -27,8 +30,8 @@ const Ekyc = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(eKyc_URL, JSON.stringify({ email: user, password: pwd }), {
-        headers: { 'Content-Type': 'application/json' },
+      const response = await axios.post("http://localhost:8080/api/eKyc", { email: user, password: pwd }, {
+        headers: {'Authorization': 'Bearer '+token ,'Content-Type': 'application/json' },
         withCredentials: true
       });
       
