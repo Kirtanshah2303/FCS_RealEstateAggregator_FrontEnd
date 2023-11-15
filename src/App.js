@@ -104,7 +104,7 @@ function App() {
           <Route path='/sellpropertyadmin' element={<SellPropertyAdmin/>}/>
           <Route path='/deletepropertyadmin' element={<DeletePropertyAdmin/>}/>
           <Route path='/viewmyrentedproperty' element={<ViewMyRentedProperty/>}/>
-          <Route path='/rentpropertycontractrental/:id' element={<ViewRentPropertyContract/>}/>
+          <Route path='/rentPropertyContractRental/:id' element={<ViewRentPropertyContract/>}/>
 
           <Route path='/payment' element={<PaymentPage/>}/>
 

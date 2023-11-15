@@ -33,7 +33,7 @@ const Viewpage = () => {
   };
 
   const handleContractClick = (event, param) => {
-    navigate(`/rentpropertycontractrental/${param}`);
+    navigate(`/rentPropertyContractRental/${param}`);
 };
 
 

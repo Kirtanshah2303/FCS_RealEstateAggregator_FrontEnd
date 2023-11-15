@@ -54,7 +54,7 @@ const ViewRentPropertyContract = () => {
         }
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setSubmitted(true);
           navigate('/buyProperty');
           alert("Otp generated successfully! Kindly check your mail");
@@ -78,8 +78,9 @@ const ViewRentPropertyContract = () => {
             "Authorization": "Bearer " + token
           }
         });
-
+        console.log("Data ----------->"+response.data);
         setRowData(response.data);
+        
         setFirstInstallmentDate(response.data.firstInstallmentDate);
         setFirstInstallmentAmount(response.data.firstInstallmentAmount);
         setDueDateOfPayment(response.data.dueDatePayment);
