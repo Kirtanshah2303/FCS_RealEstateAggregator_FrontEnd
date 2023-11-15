@@ -26,7 +26,7 @@ const BuyProperty = () => {
     const fetchData = async () => {
         try {
             // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            const response = await axios.get('http://localhost:8080/api/sell/getUnsoldPropertiesForBuyer', {
+            const response = await axios.get('http://192.168.2.251:8080/api/sell/getUnsoldPropertiesForBuyer', {
                 headers: {
                     "Authorization": "Bearer " + token
                 }

@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../api/axios';
 import { setUserSession } from '../Utils/Common';
-const LOGIN_URL = 'http://localhost:8080/api/authenticate';
+const LOGIN_URL = 'http://192.168.2.251:8080/api/authenticate';
 
 const Login = (props) => {
     const { setAuth } = useAuth();

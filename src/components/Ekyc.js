@@ -30,7 +30,7 @@ const Ekyc = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/eKyc", { email: user, password: pwd }, {
+      const response = await axios.post("http://192.168.2.251:8080/api/eKyc", { email: user, password: pwd }, {
         headers: {'Authorization': 'Bearer '+token ,'Content-Type': 'application/json' },
         withCredentials: true
       });

@@ -11,7 +11,7 @@ const ViewUserAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/admin/users', {
+        const response = await axios.get('http://192.168.2.251:8080/api/admin/users', {
           headers: {
             Authorization: 'Bearer ' + token,
           },
@@ -33,7 +33,7 @@ const ViewUserAdmin = () => {
         try {
           console.log("Inside fetchData")
           // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-          const response = axios.put('http://localhost:8080/api/admin/users/changeActivation',{"id" : activationStatus}, {
+          const response = axios.put('http://192.168.2.251:8080/api/admin/users/changeActivation',{"id" : activationStatus}, {
             headers: {
               "Authorization": "Bearer " + token
             }

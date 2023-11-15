@@ -50,7 +50,7 @@ const PaymentPage = () => {
 
 
     const token = getToken();
-    fetch('http://localhost:8080/api/payRent/'+ '1',{
+    fetch('http://192.168.2.251:8080/api/payRent/'+ '1',{
         headers:{
             "Authorization" : "Bearer " + token
         }

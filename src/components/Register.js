@@ -9,7 +9,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEXP = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const AADHAR_REGEX = /^\d{12}$/;
 
-const REGISTER_URL = 'http://localhost:8080/api/register';
+const REGISTER_URL = 'http://192.168.2.251:8080/api/register';
 
 const Register = () => {
     const userRef = useRef();

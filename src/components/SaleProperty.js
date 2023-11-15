@@ -34,7 +34,7 @@ const SaleProperty = () => {
         console.log("param is --> " + param)
         try {
             // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            await axios.delete('http://localhost:8080/api/sell/deleteUnSoldProperty/' + param, {
+            await axios.delete('http://192.168.2.251:8080/api/sell/deleteUnSoldProperty/' + param, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -53,7 +53,7 @@ const SaleProperty = () => {
         const fetchData = async () => {
             try {
                 // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-                const response = await axios.get('http://localhost:8080/api/sell/getUnsoldProperties', {
+                const response = await axios.get('http://192.168.2.251:8080/api/sell/getUnsoldProperties', {
                     headers: {
                         "Authorization": "Bearer " + token
                     }

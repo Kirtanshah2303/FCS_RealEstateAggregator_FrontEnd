@@ -16,7 +16,7 @@ const DeletePropertyAdmin = () => {
     console.log("param is --> " + param);
     console.log("Token is -- >"+token)
     try {
-      await axios.delete('http://localhost:8080/api/admin/deletePropertyForRentByAdmin/' + param, {
+      await axios.delete('http://192.168.2.251:8080/api/admin/deletePropertyForRentByAdmin/' + param, {
         headers: {
           "Authorization": "Bearer " + token
         }
@@ -30,7 +30,7 @@ const DeletePropertyAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/admin/getAllPropertiesForRent', {
+        const response = await axios.get('http://192.168.2.251:8080/api/admin/getAllPropertiesForRent', {
           headers: {
             "Authorization": "Bearer " + token
           }

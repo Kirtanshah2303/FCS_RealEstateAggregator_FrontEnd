@@ -97,7 +97,7 @@ const PropertyForm = () => {
       setFormErrors(errors);
     } else {
       axios
-        .post('http://localhost:8080/api/sell/enter', formData, {
+        .post('http://192.168.2.251:8080/api/sell/enter', formData, {
           headers: {
             Authorization: 'Bearer ' + token,
           },

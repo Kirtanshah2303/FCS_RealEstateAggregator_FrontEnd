@@ -25,7 +25,7 @@ const NonRentedProperty = () => {
     console.log("param is --> " + param)
     try {
         // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-         await axios.delete('http://localhost:8080/api/deleteNotRentedProperty/' + param, {
+         await axios.delete('http://192.168.2.251:8080/api/deleteNotRentedProperty/' + param, {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -48,7 +48,7 @@ const NonRentedProperty = () => {
       try {
         console.log("Inside getchData")
         // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-        const response = await axios.get('http://localhost:8080/api/getNotRentedProperties', {
+        const response = await axios.get('http://192.168.2.251:8080/api/getNotRentedProperties', {
           headers: {
             "Authorization": "Bearer " + token
           }

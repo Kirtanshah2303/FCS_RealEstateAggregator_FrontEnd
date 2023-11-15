@@ -112,7 +112,7 @@ const AddNewRentedProperty = () => {
     } else {
       console.log("Inside axios");
       axios
-        .post('http://localhost:8080/api/enter1', formData, {
+        .post('http://192.168.2.251:8080/api/enter1', formData, {
           headers: {
             Authorization: 'Bearer ' + token,
           },

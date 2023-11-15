@@ -23,7 +23,7 @@ const Contract = () => {
   //   // Handle form submission, e.g., sending the data to an API
   //  console.log("Form Data:"+formData);
   //   // Handle form submission, e.g., sending the data to an API
-  //   axios.get('http://localhost:8080/api/getContractDetails/'+params.id,{
+  //   axios.get('http://192.168.2.251:8080/api/getContractDetails/'+params.id,{
   //     headers:{
   //       "Authorization" : "Bearer "+ token
   //     }
@@ -44,7 +44,7 @@ const Contract = () => {
     const fetchData = async () => {
       try {
         // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-        const response = await axios.get('http://localhost:8080/api/viewRentalContract/'+ params.id,{
+        const response = await axios.get('http://192.168.2.251:8080/api/viewRentalContract/'+ params.id,{
             headers:{
                 "Authorization" : "Bearer "+ token
               }

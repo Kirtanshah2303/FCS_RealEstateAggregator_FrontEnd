@@ -27,7 +27,7 @@ const UserProfile = () => {
 
     try {
       // Make a POST request to the specified URL with the updated data
-      const response = await fetch('http://localhost:8080/api/account', {
+      const response = await fetch('http://192.168.2.251:8080/api/account', {
         method: 'PUT',
         headers: {
           "Authorization": "Bearer " + token,
@@ -56,7 +56,7 @@ const UserProfile = () => {
       try {
         console.log("Inside fetchData")
         // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-        const response = await axios.get('http://localhost:8080/api/account', {
+        const response = await axios.get('http://192.168.2.251:8080/api/account', {
           headers: {
             Authorization: 'Bearer ' + token,
           },

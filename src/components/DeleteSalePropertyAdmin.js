@@ -17,7 +17,7 @@ const SellPropertyAdmin = () => {
   const handleDeleteClick = async (event, param) => {
     console.log("param is --> " + param);
     try {
-        await axios.delete('http://localhost:8080/api/admin/deletePropertyByAdmin/' + param, {
+        await axios.delete('http://192.168.2.251:8080/api/admin/deletePropertyByAdmin/' + param, {
           headers: {
             "Authorization": "Bearer " + token
           }
@@ -31,7 +31,7 @@ const SellPropertyAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/admin/getAllPropertiesForSale', {
+        const response = await axios.get('http://192.168.2.251:8080/api/admin/getAllPropertiesForSale', {
           headers: {
             "Authorization": "Bearer " + token
           }

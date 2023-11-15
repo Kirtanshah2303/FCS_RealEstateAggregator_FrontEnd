@@ -27,7 +27,7 @@ const SellPropertyContractbuyer = () => {
     if (acknowledgment) {
       // Generate and send OTP logic here.
         // Handle form submission, e.g., sending the data to an API
-    axios.post(`http://localhost:8080/api/generateBuyerOTP/${id}`,{},{
+    axios.post(`http://192.168.2.251:8080/api/generateBuyerOTP/${id}`,{},{
       headers:{
         "Authorization" : "Bearer "+ token
       }
@@ -54,7 +54,7 @@ const SellPropertyContractbuyer = () => {
   const handleSubmit = () => {
     if (acknowledgment && otp) {
       // Add your submission logic here.
-      axios.post(`http://localhost:8080/api/validateBuyerOTP/${id}`,{"otp": otp},{
+      axios.post(`http://192.168.2.251:8080/api/validateBuyerOTP/${id}`,{"otp": otp},{
       headers:{
         "Authorization" : "Bearer "+ token
       }
@@ -83,7 +83,7 @@ const SellPropertyContractbuyer = () => {
     const fetchData = async () => {
         try {
             // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            const response = await axios.get(`http://localhost:8080/api/getContractDetails/${params.id}`, {
+            const response = await axios.get(`http://192.168.2.251:8080/api/getContractDetails/${params.id}`, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
