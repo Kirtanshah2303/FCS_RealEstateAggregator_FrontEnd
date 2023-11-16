@@ -13,28 +13,28 @@ const OngoingDealProperty = () => {
     navigate('/view/sellerContract/' + param);
   };
 
+  const fetchData = async () => {
+    try {
+        // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
+        const response = await axios.get('http://192.168.2.251:8080/api/getOngoingPropertyForBuyer', {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        // Update the rowData state with the fetched data
+        setRowData(response.data);
+    } catch (error) {
+      if(error.response?.status === 403){
+        alert("You'll have to do eKyc First to access this feature")
+        navigate("/ekyc")
+      }
+        console.error("Error fetching data:", error);
+    }
+};
+
   useEffect(() => {
     // Define an async function to fetch data
-    const fetchData = async () => {
-        try {
-            // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-            const response = await axios.get('http://192.168.2.251:8080/api/getOngoingPropertyForBuyer', {
-                headers: {
-                    "Authorization": "Bearer " + token
-                }
-            });
-
-            // Update the rowData state with the fetched data
-            setRowData(response.data);
-        } catch (error) {
-          if(error.response?.status === 403){
-            alert("You'll have to do eKyc First to access this feature")
-            navigate("/ekyc")
-          }
-            console.error("Error fetching data:", error);
-        }
-    };
-
     // Call the fetchData function when the component mounts
     fetchData();
 }, []);
