@@ -38,6 +38,8 @@ const PaymentPage = () => {
   const handlePayment = async () => {
     // Make API call to get payment details (rentalPayAmount, rentalPaidDate, paidBy, paidTo)
     // For simplicity, let's assume you have an API endpoint '/api/getPaymentDetails' that returns the required data
+
+    console.log("Handle cpayment called!!");
     
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
