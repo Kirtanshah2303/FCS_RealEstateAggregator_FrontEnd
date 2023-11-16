@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from '../api/axios';
-import { getToken } from "../Utils/Common";
+import { getToken ,removeUserSession} from "../Utils/Common";
+
 const eKyc_URL = "https://192.168.3.39:5000/kyc";
 
 const Ekyc = () => {
@@ -48,13 +49,19 @@ const Ekyc = () => {
       // }
 
       console.log("Log of the response---->"+response);
+      removeUserSession();
+      navigate("/");
+      
+
       
     } catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response');
-      } else if (err.response?.status === 400) {
+      } else if (err.response?.status === 417) {
+        alert("Something Went Wrong!!")
         setErrMsg('Missing Username or Password');
       } else if (err.response?.status === 401) {
+        alert("Wrong credentials entered!!")
         setErrMsg('Unauthorized');
       } else {
         setErrMsg('Login Failed');

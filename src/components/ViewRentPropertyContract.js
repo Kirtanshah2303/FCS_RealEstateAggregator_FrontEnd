@@ -13,9 +13,9 @@ const ViewRentPropertyContract = () => {
   const [rowData, setRowData] = useState([]);
   const token = getToken();
 
-  const [firstInstallmentDate, setFirstInstallmentDate] = useState('');
-  const [firstInstallmentAmount, setFirstInstallmentAmount] = useState('');
-  const [dueDateOfPayment, setDueDateOfPayment] = useState('');
+  const [monthlyRentDate, setMonthlyRentDate] = useState('');
+  const [securityDepositAmount, setSecurityDepositAmount] = useState('');
+  const [rentAmount, setRentAmount] = useState('');
   const [id, setId] = useState(0);
 
   const handleAcknowledgmentChange = (e) => {
@@ -57,8 +57,8 @@ const ViewRentPropertyContract = () => {
         .then((response) => {
           // console.log(response);
           setSubmitted(true);
-          navigate('/buyProperty');
-          alert("Otp generated successfully! Kindly check your mail");
+          navigate('/viewmyrentedproperty');
+          alert("Otp Validated successfully! , Please follow the contract and make payment responsibly");
         })
         .catch((error) => {
           alert("Error: " + "Invalid OTP Entered!")
@@ -82,9 +82,9 @@ const ViewRentPropertyContract = () => {
         console.log("Data ----------->"+response.data);
         setRowData(response.data);
         console.log("Contract is --> "+response.data.id)
-        setFirstInstallmentDate(response.data.firstInstallmentDate);
-        setFirstInstallmentAmount(response.data.firstInstallmentAmount);
-        setDueDateOfPayment(response.data.dueDatePayment);
+        setMonthlyRentDate(response.data.monthlyRentDate);
+        setSecurityDepositAmount(response.data.securityDepositAmount);
+        setRentAmount(response.data.rentAmount);
         setId(response.data.id);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -100,17 +100,17 @@ const ViewRentPropertyContract = () => {
       <table className="table table-bordered">
         <tbody>
           <tr>
-            <td>First Installement Date:</td>
-            <td>{firstInstallmentDate}</td>
+            <td>Monthly Rental Date:</td>
+            <td>{monthlyRentDate}</td>
           </tr>
 
           <tr>
-            <td>First Installement Amount:</td>
-            <td>{firstInstallmentAmount}</td>
+            <td>Security Deposite Amount:</td>
+            <td>{securityDepositAmount}</td>
           </tr>
           <tr>
-            <td>Due Date of Payment:</td>
-            <td>{dueDateOfPayment}</td>
+            <td>Rent Amount</td>
+            <td>{rentAmount}</td>
           </tr>
           <tr>
           <td>Terms:</td>
