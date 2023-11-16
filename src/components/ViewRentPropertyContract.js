@@ -24,6 +24,7 @@ const ViewRentPropertyContract = () => {
 
   const handleSendOTP = () => {
     if (acknowledgment) {
+      console.log("id is -->"+id)
       axios.post(`http://192.168.2.251:8080/api/generateTenantOTP/${id}`, {}, {
         headers: {
           "Authorization": "Bearer " + token
@@ -80,7 +81,7 @@ const ViewRentPropertyContract = () => {
         });
         console.log("Data ----------->"+response.data);
         setRowData(response.data);
-        
+        console.log("Contract is --> "+response.data.id)
         setFirstInstallmentDate(response.data.firstInstallmentDate);
         setFirstInstallmentAmount(response.data.firstInstallmentAmount);
         setDueDateOfPayment(response.data.dueDatePayment);
