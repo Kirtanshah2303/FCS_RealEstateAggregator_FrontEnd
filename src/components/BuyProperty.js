@@ -35,6 +35,10 @@ const BuyProperty = () => {
             // Update the rowData state with the fetched data
             setRowData(response.data);
         } catch (error) {
+          if(error.response?.status === 403){
+            alert("You'll have to do eKyc First to access this feature")
+            navigate("/ekyc")
+          }
             console.error("Error fetching data:", error);
         }
     };

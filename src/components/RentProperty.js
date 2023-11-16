@@ -57,6 +57,10 @@ const NonRentedProperty = () => {
         // Update the rowData state with the fetched data
         setRowData(response.data);
       } catch (error) {
+        if(error.response?.status === 403){
+          alert("You'll have to do eKyc First to access this feature")
+          navigate("/ekyc")
+        }
         console.error("Error fetching data:", error);
       }
     };
@@ -141,7 +145,7 @@ const NonRentedProperty = () => {
           </div>
           <div className="col-md-6">
             <button className="btn btn-primary" onClick={handleOnRentClick}>
-              Rent Property
+              Rented Properties
             </button>
           </div>
         </div>

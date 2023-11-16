@@ -35,6 +35,10 @@ const ViewRentPropertyContract = () => {
           alert("Otp generated successfully! Kindly check your mail");
         })
         .catch((error) => {
+          if(error.response?.status === 403){
+            alert("This property's deal has already done!!")
+            navigate("/viewPropertyPage")
+          }
           console.error(error);
         });
       setOtpSent(true);
@@ -87,6 +91,10 @@ const ViewRentPropertyContract = () => {
         setRentAmount(response.data.rentAmount);
         setId(response.data.id);
       } catch (error) {
+        if(error.response?.status === 403){
+          alert("You'll have to do eKyc First to access this feature")
+          navigate("/ekyc")
+        }
         console.error("Error fetching data:", error);
       }
     };
