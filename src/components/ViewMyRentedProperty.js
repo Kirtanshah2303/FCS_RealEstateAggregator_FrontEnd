@@ -150,7 +150,7 @@ const ViewMyRentedProperty = () => {
                       <td>{data.typeOfProperty}</td>
                       <td>{data.lesseeName}</td>
                       <td>
-                        <button className="btn btn-primary" type='button' onClick={handlePayClick(data.id)}>
+                        <button className="btn btn-primary" type='button' onClick={() => handlePayClick(data.id)}>
                           Pay
                         </button>
                       </td>
