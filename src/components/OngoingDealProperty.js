@@ -74,7 +74,7 @@ const handlePayClick = async (id) => {
       const options = {
         key: 'rzp_test_fE9CO5AP0eMCxf', // Replace with your Razorpay API key
         secret: 'qoNEOQjaWXud6VPPqOtgGgIH',
-        amount: paymentDetails.propertyRental.rentAmount * 100, // Amount is in paisa
+        amount: paymentDetails.propertySell.paidAmount * 100, // Amount is in paisa
         currency: 'INR', // Change currency as needed,
         // callback_url: 'http://192.168.2.251:8080/api/payment/success/'+paymentDetails.orderId,
       //   name: 'Your Company Name',
@@ -87,7 +87,7 @@ const handlePayClick = async (id) => {
         notes: {
           rentalPaidDate: '11/11/2023',
           paidBy: 'Devkul',
-          paidTo: paymentDetails.propertyRental.paidTo,
+          paidTo: paymentDetails.propertySell.paidTo,
         },
         theme: {
           color: '#3498db', // Change color as needed
