@@ -89,7 +89,16 @@ const ViewMyRentedProperty = () => {
             // Handle success
             setPaySuccess(true);
             alert(response.razorpay_payment_id);
-            alert("Payment successful");
+            axios.post('http://192.168.2.251:8080/api/payment/success/'+paymentDetails.orderId+'?razorpay_payment_id='+response.razorpay_payment_id,{},{
+              headers:{
+                'Authorization' : "Bearer "+token
+              }
+            }).then(() => {
+              alert("Payment successful");
+            }).catch((e)=>{
+              alert(e);
+            })
+            
             console.log(response);
           }
         };
