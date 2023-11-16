@@ -24,7 +24,7 @@ const ViewRentPropertyContract = () => {
 
   const handleSendOTP = () => {
     if (acknowledgment) {
-      axios.post(`http://192.168.2.251:8080/api/generateBuyerOTP/${id}`, {}, {
+      axios.post(`http://192.168.2.251:8080/api/generateTenantOTP/${id}`, {}, {
         headers: {
           "Authorization": "Bearer " + token
         }
@@ -48,7 +48,7 @@ const ViewRentPropertyContract = () => {
 
   const handleSubmit = () => {
     if (acknowledgment && otp) {
-      axios.post(`http://192.168.2.251:8080/api/validateBuyerOTP/${id}`, { "otp": otp }, {
+      axios.post(`http://192.168.2.251:8080/api/validateTenantOTP/${id}`, { "otp": otp }, {
         headers: {
           "Authorization": "Bearer " + token
         }

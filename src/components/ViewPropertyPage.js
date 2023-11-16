@@ -14,7 +14,7 @@ const Viewpage = () => {
       try {
         console.log("Inside fetchData")
         // Replace 'your_api_endpoint' with the actual API endpoint to fetch data
-        const response = await axios.get('http://192.168.2.251:8080/api/getNotRentedProperties', {
+        const response = await axios.get('http://192.168.2.251:8080/api/getNotRentedPropertiesForTenant', {
           headers: {
             Authorization: 'Bearer ' + token,
           },
