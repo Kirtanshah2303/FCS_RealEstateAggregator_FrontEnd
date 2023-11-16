@@ -57,7 +57,7 @@ const ViewMyRentedProperty = () => {
     }
 
     const token = getToken();
-    axios.get('http://192.168.2.251:8080/api/payRent/'+ id,{
+    fetch('http://192.168.2.251:8080/api/payRent/'+ id,{
         headers:{
             "Authorization" : "Bearer " + token
         }
