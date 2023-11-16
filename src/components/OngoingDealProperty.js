@@ -74,7 +74,7 @@ const handlePayClick = async (id) => {
       const options = {
         key: 'rzp_test_fE9CO5AP0eMCxf', // Replace with your Razorpay API key
         secret: 'qoNEOQjaWXud6VPPqOtgGgIH',
-        amount: paymentDetails.propertySell.PaidAmount * 100, // Amount is in paisa
+        amount: paymentDetails.PropertySell.sellAmount * 100, // Amount is in paisa
         currency: 'INR', // Change currency as needed,
         // callback_url: 'http://192.168.2.251:8080/api/payment/success/'+paymentDetails.orderId,
       //   name: 'Your Company Name',
