@@ -11,7 +11,7 @@ const ViewMyRentedProperty = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.2.251:8086/api/getMyRentedPropertiesForTenant', {
+        const response = await axios.get('http://192.168.2.251:8080/api/getMyRentedPropertiesForTenant', {
           headers: {
             Authorization: 'Bearer ' + token,
           },
