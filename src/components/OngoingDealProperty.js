@@ -60,7 +60,7 @@ const OngoingDealProperty = () => {
             </tr>
           </thead>
           <tbody>
-          {rowData.map((data, index) => (
+          {rowData && rowData.map((data, index) => (
                 <tr key={index}>
                     <td>{data.typeOfProperty}</td>
                     <td>{data.propertyNumber}</td>
