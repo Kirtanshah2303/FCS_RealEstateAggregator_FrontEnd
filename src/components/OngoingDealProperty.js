@@ -39,6 +39,10 @@ const OngoingDealProperty = () => {
     fetchData();
 }, []);
 
+if (rowData.length === 0) {
+  return <p>Loading...</p>;
+}
+
   return (
     <div>
       <h1>Ongoing Deal Properties List</h1>
