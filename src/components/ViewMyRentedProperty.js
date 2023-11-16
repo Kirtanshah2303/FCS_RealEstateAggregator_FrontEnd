@@ -46,6 +46,8 @@ const ViewMyRentedProperty = () => {
 
   const handlePayClick = async (id) => {
     // Add your payment logic here, e.g., navigate to a payment page
+    
+    console.log("Handle patment called!");
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -55,7 +57,7 @@ const ViewMyRentedProperty = () => {
     }
 
     const token = getToken();
-    fetch('http://192.168.2.251:8080/api/payRent/'+ id,{
+    axios.get('http://192.168.2.251:8080/api/payRent/'+ id,{
         headers:{
             "Authorization" : "Bearer " + token
         }
