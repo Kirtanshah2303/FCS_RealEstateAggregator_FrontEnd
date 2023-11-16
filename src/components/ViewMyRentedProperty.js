@@ -115,6 +115,10 @@ const ViewMyRentedProperty = () => {
     // navigate('/payment');
   };
 
+  if (rowData.length === 0) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="saleContainer">
       <div className="header">
