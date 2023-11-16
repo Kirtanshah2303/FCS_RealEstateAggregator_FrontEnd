@@ -10,7 +10,7 @@ const Navbar= (props) => {
   const title = "Real Estate";
   const aboutText = "eKyc";
   const aboutAdmin = "Admin";
-  const aboutPayment = "Payment";
+  // const aboutPayment = "Payment";
   const aboutText1 = "Login/SignUp";
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
@@ -96,11 +96,11 @@ console.log("You are logged In--->"+user);
                   {aboutAdmin}
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/payment" className="nav-link text-light">
                   {aboutPayment}
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input

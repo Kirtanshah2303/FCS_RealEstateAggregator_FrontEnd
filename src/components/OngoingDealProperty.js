@@ -21,7 +21,7 @@ const OngoingDealProperty = () => {
                 "Authorization": "Bearer " + token
             }
         });
-
+        console.log("API Response:", response.data);
         // Update the rowData state with the fetched data
         setRowData(response.data);
     } catch (error) {

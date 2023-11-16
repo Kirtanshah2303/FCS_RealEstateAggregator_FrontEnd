@@ -35,7 +35,6 @@ import ViewMyRentedProperty from './components/ViewMyRentedProperty';
 import Admin from './components/Admin';
 
 
-import PaymentPage from './components/PaymentPage';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth'; 
@@ -106,7 +105,7 @@ function App() {
           <Route path='/viewmyrentedproperty' element={<ViewMyRentedProperty/>}/>
           <Route path='/rentPropertyContractRental/:id' element={<ViewRentPropertyContract/>}/>
 
-          <Route path='/payment' element={<PaymentPage/>}/>
+          {/* <Route path='/payment' element={<PaymentPage/>}/> */}
 
 
 
