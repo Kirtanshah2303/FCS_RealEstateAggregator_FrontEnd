@@ -68,7 +68,8 @@ const ViewMyRentedProperty = () => {
           key: 'rzp_test_fE9CO5AP0eMCxf', // Replace with your Razorpay API key
           secret: 'qoNEOQjaWXud6VPPqOtgGgIH',
           amount: paymentDetails.propertyRental.rentAmount * 100, // Amount is in paisa
-          currency: 'INR', // Change currency as needed
+          currency: 'INR', // Change currency as needed,
+          callback_url: 'http://192.168.2.251:8080/api/payment/success/'+paymentDetails.orderId,
         //   name: 'Your Company Name',
         //   description: 'Rent Payment',
         //   image: 'URL_TO_YOUR_LOGO',
